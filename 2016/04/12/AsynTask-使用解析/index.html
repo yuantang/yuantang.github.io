@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -57,15 +57,18 @@
 
 
 
-<meta name="description" content="不要让放弃成为一种习惯">
-<meta property="og:type" content="website">
-<meta property="og:title" content="蛋哥">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="在Android开发中往往要使用多线程操作，通常会进耗时操作放在单独的线程中执行，避免其占用主线程，但是子线程无法操作主线程，在子线程操作主线程会出错误。Android提供了Handle类来实现子线程更新UI线程，但是代码会显得臃肿，使用AsynTask一个轻量级的异步任务，任务在主线程之外运行，而回调方法是在主线程中执行，这就有效地避免了使用Handler带来的麻烦，会使代码清爽很多。如果每个任">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AsynTask 使用解析">
+<meta property="og:url" content="http://yoursite.com/2016/04/12/AsynTask-使用解析/index.html">
 <meta property="og:site_name" content="蛋哥">
-<meta property="og:description" content="不要让放弃成为一种习惯">
+<meta property="og:description" content="在Android开发中往往要使用多线程操作，通常会进耗时操作放在单独的线程中执行，避免其占用主线程，但是子线程无法操作主线程，在子线程操作主线程会出错误。Android提供了Handle类来实现子线程更新UI线程，但是代码会显得臃肿，使用AsynTask一个轻量级的异步任务，任务在主线程之外运行，而回调方法是在主线程中执行，这就有效地避免了使用Handler带来的麻烦，会使代码清爽很多。如果每个任">
+<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/ansytask.png">
+<meta property="og:updated_time" content="2016-04-12T09:38:28.815Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="蛋哥">
-<meta name="twitter:description" content="不要让放弃成为一种习惯">
+<meta name="twitter:title" content="AsynTask 使用解析">
+<meta name="twitter:description" content="在Android开发中往往要使用多线程操作，通常会进耗时操作放在单独的线程中执行，避免其占用主线程，但是子线程无法操作主线程，在子线程操作主线程会出错误。Android提供了Handle类来实现子线程更新UI线程，但是代码会显得臃肿，使用AsynTask一个轻量级的异步任务，任务在主线程之外运行，而回调方法是在主线程中执行，这就有效地避免了使用Handler带来的麻烦，会使代码清爽很多。如果每个任">
+<meta name="twitter:image" content="http://7xsiux.com1.z0.glb.clouddn.com/ansytask.png">
 
 
 
@@ -83,7 +86,7 @@
   };
 </script>
 
-  <title> 蛋哥 </title>
+  <title> AsynTask 使用解析 | 蛋哥 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -104,9 +107,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -203,9 +204,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -225,10 +226,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/04/12/AsynTask-使用解析/" itemprop="url">
-                  AsynTask 使用解析
-                </a>
+                AsynTask 使用解析
               
             
           </h1>
@@ -302,283 +300,82 @@
       
 
       
-        
-          
-            <p>在Android开发中往往要使用多线程操作，通常会进耗时操作放在单独的线程中执行，避免其占用主线程，但是子线程无法操作主线程，在子线程操作主线程会出错误。Android提供了Handle类来实现子线程更新UI线程，但是代码会显得臃肿，使用AsynTask一个轻量级的异步任务，任务在主线程之外运行，而回调方法是在主线程中执行，这就有效地避免了使用Handler带来的麻烦，会使代码清爽很多。<br>如果每个任务都要创建一个线程，那么应用程序的效率要低很多，并且线程无法管理，匿名线程创建并启动后就不受程序的控制了，如果有很多个请求发送，那么就会启动非常多的线程，系统将不堪重负，为了解决以上的问题，Android在1.5版本引入了AsyncTask。AsyncTask是使用java.util.concurrent框架来管理线程以及并发任务的执行，concurrent框架是一个非常成熟，高效的框架，经过了严格的测试，因此AsyncTask很好的解决了多线程的问题。</p>
+        <p>在Android开发中往往要使用多线程操作，通常会进耗时操作放在单独的线程中执行，避免其占用主线程，但是子线程无法操作主线程，在子线程操作主线程会出错误。Android提供了Handle类来实现子线程更新UI线程，但是代码会显得臃肿，使用AsynTask一个轻量级的异步任务，任务在主线程之外运行，而回调方法是在主线程中执行，这就有效地避免了使用Handler带来的麻烦，会使代码清爽很多。<br>如果每个任务都要创建一个线程，那么应用程序的效率要低很多，并且线程无法管理，匿名线程创建并启动后就不受程序的控制了，如果有很多个请求发送，那么就会启动非常多的线程，系统将不堪重负，为了解决以上的问题，Android在1.5版本引入了AsyncTask。AsyncTask是使用java.util.concurrent框架来管理线程以及并发任务的执行，concurrent框架是一个非常成熟，高效的框架，经过了严格的测试，因此AsyncTask很好的解决了多线程的问题。</p>
 <h3 id="1、AsyncTask的执行步骤"><a href="#1、AsyncTask的执行步骤" class="headerlink" title="1、AsyncTask的执行步骤"></a>1、AsyncTask的执行步骤</h3><p>AsyncTask的执行分为四个步骤，每一步都对应执行方法，这些方法不应该由应用程序调用，开发者需要做的就是实现这些方法。在任务的执行过程中，这些方法被自动调用执行。<br><strong>(1) onPreExecute() 当任务执行之前开始调用此方法，可以在这里显示进度对话框。</strong><br><strong>(2) onProgressUpdate(Progress… values) 当任务执行中调用,此方法在主线程执行，用于显示任务执行的进度。</strong><br><strong>(3) doInBackground(Params… params) 此方法在后台线程执行（子线程），完成任务的主要工作，通常是一个耗时操作。在执行过程中可以调用publicProgress(Progress…)来更新任务的进度。</strong><br><strong>(4) onPostExecute(Result…result) 此方法在主线程执行（UI线程），任务执行的结果作为此方法的参数返回。</strong></p>
 <h3 id="2、AsyncTask的泛型类型-Params，Progress和Result。"><a href="#2、AsyncTask的泛型类型-Params，Progress和Result。" class="headerlink" title="2、AsyncTask的泛型类型 Params，Progress和Result。"></a>2、AsyncTask的泛型类型 Params，Progress和Result。</h3><p><img src="http://7xsiux.com1.z0.glb.clouddn.com/ansytask.png" alt="image"><br>AsyncTask定义了三种泛型类型 Params，Progress和Result。<br><strong>(1) Params 启动任务执行的输入可变参数，比如HTTP请求的URL,可以指定多个。</strong><br><strong>(2) Progress 后台任务执行的百分比。在doInBackground()中调用调用publicProgress(Progress…)设置的参数。</strong><br><strong>(3) Result 后台执行任务最终返回的结果，比如String、object…</strong></p>
 <h3 id="3、AsyncTask使用实例"><a href="#3、AsyncTask使用实例" class="headerlink" title="3、AsyncTask使用实例"></a>3、AsyncTask使用实例</h3><p>正确使用AsyncTask类，要遵守以下几条准则：<br><strong>(1) Task的实例必须在UI thread中创建。</strong><br><strong>(2) execute方法必须在UI thread中调用。</strong><br><strong>(3) 不要手动的调用onPreExecute(), onPostExecute(Result)，doInBackground(Params…), onProgressUpdate(Progress…)这几个方法。</strong><br><strong>(4) 该task只能被执行一次，否则多次调用时将会出现异常。</strong><br><strong>(5) doInBackground方法和onPostExecute的参数必须对应。</strong></p>
 <p>下面是从网上获取一个网页在TextViewh中展示源码的实例<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">import android.os.AsyncTask;</span><br><span class="line">import android.os.Bundle;</span><br><span class="line">import android.support.annotation.Nullable;</span><br><span class="line">import android.support.v7.app.AppCompatActivity;</span><br><span class="line">import android.util.Log;</span><br><span class="line">import android.view.View;</span><br><span class="line">import android.widget.EditText;</span><br><span class="line">import android.widget.ProgressBar;</span><br><span class="line">import android.widget.TextView;</span><br><span class="line">import android.widget.Toast;</span><br><span class="line">import java.io.ByteArrayOutputStream;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line">import java.net.HttpURLConnection;</span><br><span class="line">import java.net.URL;</span><br><span class="line"></span><br><span class="line">public class Activity extends AppCompatActivity &#123;</span><br><span class="line">    private EditText url_edt;</span><br><span class="line">    private ProgressBar progress;</span><br><span class="line">    private TextView content_txt;</span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        <span class="built_in">set</span>ContentView(R.layout.activity_main2);</span><br><span class="line">        url_edt= (EditText) findViewById(R.id.addres_edt);</span><br><span class="line">        progress= (ProgressBar) findViewById(R.id.progress);</span><br><span class="line">        content_txt= (TextView) findViewById(R.id.content_txt);</span><br><span class="line">        findViewById(R.id.do_btn).setOnClickListener(new View.<span class="function"><span class="title">OnClickListener</span></span>() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                getContent();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    private void <span class="function"><span class="title">getContent</span></span>() &#123;</span><br><span class="line">        <span class="keyword">if</span> (url_edt.getText().toString()!=null)&#123;</span><br><span class="line">            MyTask myTask=new MyTask();</span><br><span class="line">            //execute()在UI线程中执行</span><br><span class="line">            myTask.execute(url_edt.getText().toString().trim());</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            Toast.makeText(this,<span class="string">"请输入地址"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    class  MyTask extends AsyncTask&lt;String,Integer,Object&gt;&#123;</span><br><span class="line">        private static final String TAG = <span class="string">"MyTask"</span>;</span><br><span class="line"></span><br><span class="line">        //1、当任务执行之前开始调用此方法，可以在这里显示进度对话框。</span><br><span class="line">        @Override</span><br><span class="line">        protected void <span class="function"><span class="title">onPreExecute</span></span>() &#123;</span><br><span class="line">            super.onPreExecute();</span><br><span class="line">            Log.d(TAG,<span class="string">"onPreExecute"</span>);</span><br><span class="line">            progress.setVisibility(View.VISIBLE);</span><br><span class="line">        &#125;</span><br><span class="line">        //2、当任务执行中调用，此方法在主线程执行，用于显示任务执行的进度。</span><br><span class="line">        @Override</span><br><span class="line">        protected void onProgressUpdate(Integer... values) &#123;</span><br><span class="line">            super.onProgressUpdate(values);</span><br><span class="line">            Log.d(TAG,<span class="string">"onProgressUpdate--------&gt;"</span>+values[0]);</span><br><span class="line">            progress.setProgress(values[0]);</span><br><span class="line">        &#125;</span><br><span class="line">        //3、此方法在后台线程执行（子线程），完成任务的主要工作，通常是一个耗时操作。</span><br><span class="line">        // 在执行过程中可以调用publicProgress(Progress…)来更新任务的进度。</span><br><span class="line">        @Override</span><br><span class="line">        protected Object <span class="keyword">do</span>InBackground(String... params) &#123;</span><br><span class="line">            Log.d(TAG,<span class="string">"doInBackground"</span>);</span><br><span class="line">            //获取网络数据</span><br><span class="line">            Object s = getData(params[0]);</span><br><span class="line">            <span class="keyword">if</span> (s != null)&#123;</span><br><span class="line">                <span class="built_in">return</span> s;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> null;</span><br><span class="line">        &#125;</span><br><span class="line">        //4、此方法在主线程执行（UI线程），任务执行的结果作为此方法的参数返回。</span><br><span class="line">        @Override</span><br><span class="line">        protected void onPostExecute(Object o) &#123;</span><br><span class="line">            super.onPostExecute(o);</span><br><span class="line">            Log.d(TAG,<span class="string">"onPostExecute------&gt;"</span>+o.toString());</span><br><span class="line">            content_txt.setText(o.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        @Nullable</span><br><span class="line">        private Object getData(String param) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                URL url=new URL(param);</span><br><span class="line">                HttpURLConnection httpUrlConnection= (HttpURLConnection) url.openConnection();</span><br><span class="line">                httpUrlConnection.setDoOutput(<span class="literal">true</span>);</span><br><span class="line">                httpUrlConnection.setDoInput(<span class="literal">true</span>);</span><br><span class="line">                // 请求不使用缓存</span><br><span class="line">                httpUrlConnection.setUseCaches(<span class="literal">false</span>);</span><br><span class="line">                // 设定传送的内容类型是可序列化的java对象</span><br><span class="line">                // (如果不设此项,在传送序列化对象时,当WEB服务默认的不是这种类型时可能抛java.io.EOFException)</span><br><span class="line">                httpUrlConnection.setRequestProperty(<span class="string">"Content-type"</span>, <span class="string">"application/x-java-serialized-object"</span>);</span><br><span class="line"></span><br><span class="line">                // 要求http请求不要gzip压缩，如果是gzip获取到响应长度是-1</span><br><span class="line">                httpUrlConnection .setRequestProperty(<span class="string">"Accept-Encoding"</span>, <span class="string">"identity"</span>);</span><br><span class="line">                long length = httpUrlConnection.getContentLength();</span><br><span class="line"></span><br><span class="line">                // 设定请求的方法为<span class="string">"POST"</span>，默认是GET</span><br><span class="line">                httpUrlConnection.setRequestMethod(<span class="string">"GET"</span>);</span><br><span class="line">                //连接，从上述第2条中url.openConnection()至此的配置必须要在connect之前完成，</span><br><span class="line">                httpUrlConnection.connect();</span><br><span class="line">                InputStream is=httpUrlConnection.getInputStream();</span><br><span class="line">                //判断是否正常响应数据</span><br><span class="line">                <span class="keyword">if</span> (httpUrlConnection.getResponseCode() != HttpURLConnection.HTTP_OK) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"网络错误异常！!!!"</span>);</span><br><span class="line">                    <span class="built_in">return</span>  <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                Log.d(TAG,<span class="string">"getContentLength----------&gt;"</span>+length);</span><br><span class="line">                String s = null;</span><br><span class="line">                <span class="keyword">if</span>(is != null) &#123;</span><br><span class="line">                    ByteArrayOutputStream baos = new ByteArrayOutputStream();</span><br><span class="line">                    byte[] buf = new byte[1024];</span><br><span class="line">                    int ch = -1;</span><br><span class="line">                    int count = 0;</span><br><span class="line">                    <span class="keyword">while</span>((ch = is.read(buf)) != -1) &#123;</span><br><span class="line">                        baos.write(buf, 0, ch);</span><br><span class="line">                        count += ch;</span><br><span class="line">                        <span class="keyword">if</span>(length &gt; 0) &#123;</span><br><span class="line">                            // 如果知道响应的长度，调用publishProgress（）更新进度</span><br><span class="line">                            publishProgress((int) ((count / (<span class="built_in">float</span>) length) * 100));</span><br><span class="line">                        &#125;</span><br><span class="line">                        // 让线程休眠100ms</span><br><span class="line">                        Thread.sleep(500);</span><br><span class="line">                    &#125;</span><br><span class="line">                    s = new String(baos.toByteArray());</span><br><span class="line">                &#125;</span><br><span class="line">                // 返回结果</span><br><span class="line">                <span class="built_in">return</span> s;</span><br><span class="line">            &#125; catch(Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">return</span> null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-          
-        
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/11/Android命名规范/" itemprop="url">
-                  Android命名规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T09:41:40+08:00" content="2016-04-11">
-              2016-04-11
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/11/Android命名规范/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/Android命名规范/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/11/Android命名规范/" class="leancloud_visitors" data-flag-title="Android命名规范">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>在公司接触几个项目，代码命名都没有统一的命名规范，读起来很不方面。所以总结了一下，使用自己能够养成一个好的代码命名规范，毕竟好的代码命名规范提高代码的可读性，会使日后代码维护效率提高很多。</p>
-<h3 id="1、书写规范"><a href="#1、书写规范" class="headerlink" title="1、书写规范"></a>1、书写规范</h3><ul>
-<li><strong>编码方式统一是UTF-8</strong></li>
-<li><strong>一个方法最多不要超过40行代码</strong></li>
-</ul>
-<h3 id="2、命名规范"><a href="#2、命名规范" class="headerlink" title="2、命名规范"></a>2、命名规范</h3><ul>
-<li><strong>包命名:域名反写+项目名称+模块名称，全部单词用小写字母。</strong></li>
-<li><strong>类和接口命名：使用大驼峰规则，用名词或名词词组命名，每个单词的首字母大写。</strong><br> 以下为几种常用类的命名：<blockquote>
-<p> activity类，命名以Activity为后缀，如：LoginActivity<br> fragment类，命名以Fragment为后缀，如：ShareDialogFragment<br> service类，命名以Service为后缀，如：DownloadService<br> adapter类，命名以Adapter为后缀，如：FundListAdapter<br> 工具类，命名以Util为后缀，如：EncryptUtil<br> 模型类，命名以Bean为后缀，如：UserBean<br> 接口实现类，命名以Impl为后缀，如：ApiImpl</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="3、方法名：使用小驼峰规则，用动词命名，第一个单词的首字母小写，其他单词的首字母大写。"><a href="#3、方法名：使用小驼峰规则，用动词命名，第一个单词的首字母小写，其他单词的首字母大写。" class="headerlink" title="3、方法名：使用小驼峰规则，用动词命名，第一个单词的首字母小写，其他单词的首字母大写。"></a>3、方法名：使用小驼峰规则，用动词命名，第一个单词的首字母小写，其他单词的首字母大写。</h3><p>以下是几种常见的方法的命名：</p>
-<blockquote>
-<p>  初始化方法，命名以init开头，例：initView<br>  按钮点击方法，命名以to开头，例：toLogin<br>  设置方法，命名以set开头，   例：setData<br>  具有返回值的获取方法，命名以get开头，   例：getData<br>  通过异步加载数据的方法，命名以load开头，例：loadData<br>  布尔型的判断方法，命名以is或has，或具有逻辑意义的单词如equals，例：isEmpty</p>
-</blockquote>
-<h3 id="4、控件缩写"><a href="#4、控件缩写" class="headerlink" title="4、控件缩写:"></a>4、控件缩写:</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">控件</th>
-<th style="text-align:left">缩写</th>
-<th style="text-align:left">控件</th>
-<th style="text-align:left">缩写</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">TextView</td>
-<td style="text-align:left">txt</td>
-<td style="text-align:left">EditText</td>
-<td style="text-align:left">edt</td>
-</tr>
-<tr>
-<td style="text-align:left">Button</td>
-<td style="text-align:left">btn</td>
-<td style="text-align:left">ImageButton</td>
-<td style="text-align:left">ibtn</td>
-</tr>
-<tr>
-<td style="text-align:left">ImageView</td>
-<td style="text-align:left">img</td>
-<td style="text-align:left">ListView</td>
-<td style="text-align:left">list</td>
-</tr>
-<tr>
-<td style="text-align:left">RadioGroup</td>
-<td style="text-align:left">group</td>
-<td style="text-align:left">RadioButton</td>
-<td style="text-align:left">rbtn</td>
-</tr>
-<tr>
-<td style="text-align:left">ProgressBar</td>
-<td style="text-align:left">progress</td>
-<td style="text-align:left">SeekBar</td>
-<td style="text-align:left">seek</td>
-</tr>
-<tr>
-<td style="text-align:left">CheckBox</td>
-<td style="text-align:left">chk</td>
-<td style="text-align:left">Spinner</td>
-<td style="text-align:left">spinner</td>
-</tr>
-<tr>
-<td style="text-align:left">TableLayout</td>
-<td style="text-align:left">table</td>
-<td style="text-align:left">TableRow</td>
-<td style="text-align:left">row</td>
-</tr>
-<tr>
-<td style="text-align:left">LinearLayout</td>
-<td style="text-align:left">llayout</td>
-<td style="text-align:left">RelativeLayout</td>
-<td style="text-align:left">rlayout</td>
-</tr>
-<tr>
-<td style="text-align:left">ScrollView</td>
-<td style="text-align:left">scroll</td>
-<td style="text-align:left">SearchView</td>
-<td style="text-align:left">search</td>
-</tr>
-<tr>
-<td style="text-align:left">TabHost</td>
-<td style="text-align:left">host</td>
-<td style="text-align:left">TabWidget</td>
-<td style="text-align:left">widget</td>
-</tr>
-</tbody>
-</table>
-<h3 id="5、常量命名"><a href="#5、常量命名" class="headerlink" title="5、常量命名:"></a>5、常量命名:</h3><p>   全部为大写单词，单词之间用下划线分开。<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public final static int PAGE_SIZE = 20;</span><br></pre></td></tr></table></figure></p>
-<h3 id="6、变量命名"><a href="#6、变量命名" class="headerlink" title="6、变量命名:"></a>6、变量命名:</h3><p><strong>{范围描述+}意义描述+类型描述的组合，用驼峰式，首字母小写。</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">private TextView headerTitleTxt; // 标题栏的标题</span><br><span class="line">private Button   loginBtn;       // 登录按钮</span><br><span class="line">private UserBean userBean;       // 用户实例</span><br></pre></td></tr></table></figure></p>
-<h3 id="7、控件id命名"><a href="#7、控件id命名" class="headerlink" title="7、控件id命名:"></a>7、控件id命名:</h3><p><strong>{范围<em>}意义</em>控件缩写，范围可选，只在有明确定义的范围内才需要加上。</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:id=<span class="string">"@+id/header_title_txt"</span></span><br><span class="line">android:id=<span class="string">"@+id/login_btn"</span></span><br></pre></td></tr></table></figure></p>
-<p>(通过ButterKnife插件自动绑定控件后和(6)变量命名刚好吻合)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Bind(R.id.header_title_txt)</span><br><span class="line">TextView headerTitleTxt;</span><br><span class="line">@Bind(R.id.login_btn)</span><br><span class="line">Button loginBtn;</span><br></pre></td></tr></table></figure></p>
-<h3 id="8、layout命名"><a href="#8、layout命名" class="headerlink" title="8、layout命名:"></a>8、layout命名:</h3><p><strong>组件类型<em>{范围</em>}功能，范围可选，只在有明确定义的范围内才需要加上。</strong><br>以下为几种常用的组件类型命名：</p>
-<blockquote>
-<p>activity<em>{范围</em>}功能，   为Activity的命名格式<br>fragment<em>{范围</em>}功能，   为Fragment的命名格式<br>dialog<em>{范围</em>}功能，     为Dialog的命名格式<br>item<em>list</em>{范围_}功能，  为ListView的item命名格式<br>item<em>grid</em>{范围_}功能，  为GridView的item命名格式<br>header<em>list</em>{范围_}功能，为ListView的HeaderView命名格式<br>footer<em>list</em>{范围_}功能，为ListView的FooterView命名格式</p>
-</blockquote>
-<h3 id="9、strings的命名"><a href="#9、strings的命名" class="headerlink" title="9、strings的命名"></a>9、strings的命名</h3><p><strong>类型<em>{范围</em>}功能，范围可选。</strong></p>
-<blockquote>
-<p>页面标题，命名格式为：      title<em>页面<br>按钮文字，命名格式为：      btn</em>按钮事件<br>标签文字，命名格式为：      label<em>标签文字<br>选项卡文字，命名格式为：    tab</em>选项卡文字<br>消息框文字，命名格式为：    toast<em>消息<br>编辑框的提示文字，命名格式为： hint</em>提示信息<br>图片的描述文字，命名格式为：   desc<em>图片文字<br>对话框的文字，命名格式为：     dialog</em>文字<br>menu的item文字，命名格式为：   action_文字</p>
-</blockquote>
-<h3 id="10、colors的命名"><a href="#10、colors的命名" class="headerlink" title="10、colors的命名"></a>10、colors的命名</h3><p><strong>前缀{<em>控件}{</em>范围}{_后缀}，控件、范围、后缀可选，但控件和范围至少要有一个。</strong></p>
-<blockquote>
-<p>背景颜色，添加bg前缀<br>文本颜色，添加text前缀<br>分割线颜色，添加div前缀<br>区分状态时，默认状态的颜色，添加normal后缀<br>区分状态时，按下时的颜色，  添加pressed后缀<br>区分状态时，选中时的颜色，  添加selected后缀<br>区分状态时，不可用时的颜色，添加disable后缀</p>
-</blockquote>
-<h3 id="11、drawable的命名"><a href="#11、drawable的命名" class="headerlink" title="11、drawable的命名"></a>11、drawable的命名</h3><p><strong>前缀{<em>控件}{</em>范围}{_后缀}，控件、范围、后缀可选，但控件和范围至少要有一个。</strong></p>
-<blockquote>
-<p>图标类，添加ic前缀<br>背景类，添加bg前缀<br>分隔类，添加div前缀<br>默认类，添加def前缀<br>区分状态时，默认状态，      添加normal后缀<br>区分状态时，按下时的状态，  添加pressed后缀<br>区分状态时，选中时的状态，  添加selected后缀<br>区分状态时，不可用时的状态，添加disable后缀<br>多种状态的，添加selector后缀（一般为ListView的selector或按钮的selector）</p>
-</blockquote>
-<h3 id="12、动画文件命名"><a href="#12、动画文件命名" class="headerlink" title="12、动画文件命名"></a>12、动画文件命名</h3><p><strong>动画类型_动画方向。</strong></p>
-<blockquote>
-<p>fade_in，           淡入<br>fade_out，          淡出<br>push_down_in，      从下方推入<br>push_down_out，     从下方推出<br>slide_in_from_top， 从头部滑动进入<br>zoom_enter，        变形进入<br>shrink_to_middle，  中间缩小</p>
-</blockquote>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/11/Android命名规范/" rel="next" title="Android命名规范">
+                <i class="fa fa-chevron-left"></i> Android命名规范
+              </a>
+            
+          </div>
 
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/12/AsynTask-使用解析/"
+     data-title="AsynTask 使用解析"
+     data-content=""
+     data-url="http://yoursite.com/2016/04/12/AsynTask-使用解析/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -586,6 +383,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/12/AsynTask-使用解析/"
+           data-title="AsynTask 使用解析" data-url="http://yoursite.com/2016/04/12/AsynTask-使用解析/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -605,8 +410,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://tp4.sinaimg.cn/2987248991/50/5698073446/1"
@@ -678,6 +492,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、AsyncTask的执行步骤"><span class="nav-number">1.</span> <span class="nav-text">1、AsyncTask的执行步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、AsyncTask的泛型类型-Params，Progress和Result。"><span class="nav-number">2.</span> <span class="nav-text">2、AsyncTask的泛型类型 Params，Progress和Result。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、AsyncTask使用实例"><span class="nav-number">3.</span> <span class="nav-text">3、AsyncTask使用实例</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -762,6 +587,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
