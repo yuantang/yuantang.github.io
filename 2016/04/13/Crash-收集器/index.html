@@ -1,0 +1,751 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;在Android开发中经常会遇到各种各样的异常使程序闪退，每次的问题不尽相同，如果每次是链接电脑还可以通过log找到哪里的代码出错，可是有的时候闪退我们并不能很及时的捕获到异常，但是我们又想得到闪退时候的log日志，鉴于此一个Crash收集器显得大有用处了。&amp;#160; &amp;#160; &amp;#160; &amp;#160;我们可以将异常存储在本地也可以上传">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Crash 收集器">
+<meta property="og:url" content="http://yoursite.com/2016/04/13/Crash-收集器/index.html">
+<meta property="og:site_name" content="蛋哥">
+<meta property="og:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;在Android开发中经常会遇到各种各样的异常使程序闪退，每次的问题不尽相同，如果每次是链接电脑还可以通过log找到哪里的代码出错，可是有的时候闪退我们并不能很及时的捕获到异常，但是我们又想得到闪退时候的log日志，鉴于此一个Crash收集器显得大有用处了。&amp;#160; &amp;#160; &amp;#160; &amp;#160;我们可以将异常存储在本地也可以上传">
+<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/Screenshot_2016-04-13-11-10-41.png?imageView/2/w/500/q/100">
+<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/Screenshot_2016-04-13-11-11-14.png?imageView/2/w/500/q/100">
+<meta property="og:updated_time" content="2016-04-13T04:44:41.980Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Crash 收集器">
+<meta name="twitter:description" content="&amp;#160; &amp;#160; &amp;#160; &amp;#160;在Android开发中经常会遇到各种各样的异常使程序闪退，每次的问题不尽相同，如果每次是链接电脑还可以通过log找到哪里的代码出错，可是有的时候闪退我们并不能很及时的捕获到异常，但是我们又想得到闪退时候的log日志，鉴于此一个Crash收集器显得大有用处了。&amp;#160; &amp;#160; &amp;#160; &amp;#160;我们可以将异常存储在本地也可以上传">
+<meta name="twitter:image" content="http://7xsiux.com1.z0.glb.clouddn.com/Screenshot_2016-04-13-11-10-41.png?imageView/2/w/500/q/100">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Crash 收集器 | 蛋哥 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">蛋哥</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Crash 收集器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-13T10:30:00+08:00" content="2016-04-13">
+              2016-04-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/13/Crash-收集器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/Crash-收集器/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/04/13/Crash-收集器/" class="leancloud_visitors" data-flag-title="Crash 收集器">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&#160; &#160; &#160; &#160;<strong>在</strong>Android开发中经常会遇到各种各样的异常使程序闪退，每次的问题不尽相同，如果每次是链接电脑还可以通过log找到哪里的代码出错，可是有的时候闪退我们并不能很及时的捕获到异常，但是我们又想得到闪退时候的log日志，鉴于此一个Crash收集器显得大有用处了。<br>&#160; &#160; &#160; &#160;我们可以将异常存储在<strong>本地</strong>也可以上传到<strong>服务器</strong>。本地信息可以便于我们快速找到出现错误的地方，上传服务器便于我们对异常信息进行分类总结整理，从而能够能快速的分析解决问题。</p>
+<ul>
+<li><p>异常的收集主要实现<strong>UncaughtExceptionHandler</strong>接口，具体看一下代码实现过程</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">mDefaultCrashHandler=<span class="keyword">new</span> Thread.UncaughtExceptionHandler()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span><span class="params">(Thread thread, Throwable ex)</span> </span>&#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"未捕捉的异常："</span>, ex);</span><br><span class="line">            <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    Looper.prepare();</span><br><span class="line">                    Toast.makeText(mContext, <span class="string">"呀，程序挂了，真的非常对不起!"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">                    Looper.loop();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;.start();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (Config.isDebug)&#123;</span><br><span class="line">                    <span class="comment">//保存在本地</span></span><br><span class="line">                    saveException(ex);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//上传到服务器</span></span><br><span class="line">                    uploadExceptionToServer(ex);</span><br><span class="line">                &#125;</span><br><span class="line">                Log.e(TAG, <span class="string">"未捕捉的异常保存成功"</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">                Log.e(TAG, <span class="string">"未捕捉的异常保存失败"</span>);</span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            Log.e(TAG, <span class="string">"prepare kill process"</span>);</span><br><span class="line">            android.os.Process.killProcess(android.os.Process.myPid());</span><br><span class="line">            Log.e(TAG, <span class="string">"prepare exit"</span>);</span><br><span class="line">            System.exit(<span class="number">1</span>);</span><br><span class="line">            Log.e(TAG, <span class="string">"exited"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">Thread.setDefaultUncaughtExceptionHandler(mDefaultCrashHandler);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>保存到本地调用<strong>saveException(ex)</strong>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 把错误保存起来，如果有sdCard，则保存到sdCard的缓存中，否则保存到内部存储的缓存中</span><br><span class="line"> * sdCard位置： /storage/emulated/0/Android/data/com.coder.someproject/cache/log/20151113_095811.log&lt;br/&gt;</span><br><span class="line"> * 内部存储位置：/data/data/com.coder.someproject/cache/log/20151113_180041.log</span><br><span class="line"> * <span class="doctag">@param</span> ex</span><br><span class="line"> * <span class="doctag">@throws</span> Exception</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveException</span><span class="params">(Throwable ex)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    File logDir = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())</span><br><span class="line">            ? mContext.getExternalCacheDir()</span><br><span class="line">            :mContext.getCacheDir();</span><br><span class="line">    logDir = <span class="keyword">new</span> File(logDir, <span class="string">"log"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!logDir.exists()) &#123;</span><br><span class="line">        logDir.mkdir();</span><br><span class="line">    &#125;</span><br><span class="line">    File logFile = <span class="keyword">new</span> File(logDir, <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyyMMdd_HHmmss"</span>, Locale.SIMPLIFIED_CHINESE).format(<span class="keyword">new</span> Date()) + <span class="string">".log"</span>);</span><br><span class="line">    Log.e(<span class="string">"abc"</span>, <span class="string">"错误日记保存位置："</span> + logFile.getAbsolutePath());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">long</span> current=System.currentTimeMillis();</span><br><span class="line">        String time=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-mm-dd HH:mm:ss"</span>).format(<span class="keyword">new</span> Date(current));</span><br><span class="line">        PrintWriter pw=<span class="keyword">new</span> PrintWriter(<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(logFile)));</span><br><span class="line">        pw.println(<span class="string">"time:"</span>+time);</span><br><span class="line">        dumpPhoneInfo(pw);</span><br><span class="line">        pw.println();</span><br><span class="line">        ex.printStackTrace(pw);</span><br><span class="line">        pw.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为了便于我们追逐异常我们还需要知道当期应用使用手机的信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * 获取当前应用和手机的信息</span><br><span class="line">     * <span class="doctag">@param</span> pw</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dumpPhoneInfo</span><span class="params">(PrintWriter pw)</span> </span>&#123;</span><br><span class="line">        PackageManager pm=mContext.getPackageManager();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            PackageInfo pi=pm.getPackageInfo(mContext.getPackageName(),PackageManager.GET_ACTIVITIES);</span><br><span class="line">            pw.print(<span class="string">"App Version:"</span>);</span><br><span class="line">            pw.print(pi.versionName);</span><br><span class="line">            pw.print(<span class="string">"_"</span>);</span><br><span class="line">            pw.println(pi.versionCode);</span><br><span class="line">            <span class="comment">//Android  版本号</span></span><br><span class="line">            pw.print(<span class="string">"OS Version:"</span>);</span><br><span class="line">            pw.print(Build.VERSION.RELEASE);</span><br><span class="line">            pw.print(<span class="string">"_"</span>);</span><br><span class="line">            pw.println(Build.VERSION.SDK_INT);</span><br><span class="line">            <span class="comment">//手机制造商信息</span></span><br><span class="line">            pw.print(<span class="string">"Vendor:"</span>);</span><br><span class="line">            pw.println(Build.MANUFACTURER);</span><br><span class="line">            <span class="comment">//手机型号</span></span><br><span class="line">            pw.print(<span class="string">"Model:"</span>);</span><br><span class="line">            pw.println(Build.MODEL);</span><br><span class="line">            <span class="comment">//cup架构</span></span><br><span class="line">            pw.print(<span class="string">"CPU ABI:"</span>);</span><br><span class="line">            pw.println(Build.CPU_ABI);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (PackageManager.NameNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>这样一个Carsh收集工作就做好，然后在Applciaton中初始化就可以工作了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate();</span><br><span class="line">    CrashHandler crashHandler=<span class="keyword">new</span> CrashHandler();</span><br><span class="line">    crashHandler.init(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>测试一下，我们自定义一个异常，然后查看我们本地收集到的异常信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">button .setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">"button"</span>,Toast.LENGTH_SHORT);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"自定义异常....."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地捕获异常信息截图<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/Screenshot_2016-04-13-11-10-41.png?imageView/2/w/500/q/100" alt=""><br><img src="http://7xsiux.com1.z0.glb.clouddn.com/Screenshot_2016-04-13-11-11-14.png?imageView/2/w/500/q/100" alt=""></p>
+</li>
+<li><p>异常捕获工具类放到<strong>Gists</strong>上了：<strong><a href="https://gist.github.com/yuantang/754e0362cc79852f88d702bc7455cd15" target="_blank" rel="external">Crash收集器</a></strong></p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/12/AsynTask-使用解析/" rel="next" title="AsynTask 使用解析">
+                <i class="fa fa-chevron-left"></i> AsynTask 使用解析
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/04/13/Crash-收集器/"
+     data-title="Crash 收集器"
+     data-content=""
+     data-url="http://yoursite.com/2016/04/13/Crash-收集器/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/13/Crash-收集器/"
+           data-title="Crash 收集器" data-url="http://yoursite.com/2016/04/13/Crash-收集器/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp4.sinaimg.cn/2987248991/50/5698073446/1"
+               alt="yuantang" />
+          <p class="site-author-name" itemprop="name">yuantang</p>
+          <p class="site-description motion-element" itemprop="description">不要让放弃成为一种习惯</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yuantang" target="_blank">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2987248991" target="_blank">
+                  
+                    <i class="fa fa-globe"></i>
+                  
+                  weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">yuantang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yuantanggithubio"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("yWyhIwtlAdqPAA3jmnfGsPml-gzGzoHsz", "Gi2LnRk2VlgyXPXexfKSVB29");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
