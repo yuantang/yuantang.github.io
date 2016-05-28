@@ -57,16 +57,19 @@
 
 
 
-<meta name="description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近项目中出现一个bug在登录应用然后HOME键使用其他应用然后回到刚才的应用提示你下线重新登录，找了好久才发现是手机内存不足，应用被系统kill。Android独特的内存机制,导致系统内存不足时会销毁后台的应用,这里我们研究一下应用被销毁后重新加载时的情形一个安卓应用A先后打开3个Activity: a –&amp;gt; b –&amp;gt; c 这个时候如果">
+<meta name="description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Android开发中为了美观或是和ios风格统一，控件往往设置成圆角，为了使控件有一个点击的效果我们会使用选择器来实现，这里简单介绍一下实现步骤。
+1、给控件设置圆角给控件设置圆角一般可以使用shape标签来实现,这里罗列一些shape的基本属性有一个在线的shape编辑工具地址可以在线完成你想要的效果12345678910111213141516">
 <meta property="og:type" content="article">
-<meta property="og:title" content=" Android应用在内存不足被KILL时如何保存与恢复数据">
-<meta property="og:url" content="http://yoursite.com/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/index.html">
+<meta property="og:title" content="Android控件圆角和背景选择器的使用">
+<meta property="og:url" content="http://yoursite.com/2016/05/28/Android控件圆角和背景选择器的使用/index.html">
 <meta property="og:site_name" content="蛋哥">
-<meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近项目中出现一个bug在登录应用然后HOME键使用其他应用然后回到刚才的应用提示你下线重新登录，找了好久才发现是手机内存不足，应用被系统kill。Android独特的内存机制,导致系统内存不足时会销毁后台的应用,这里我们研究一下应用被销毁后重新加载时的情形一个安卓应用A先后打开3个Activity: a –&amp;gt; b –&amp;gt; c 这个时候如果">
-<meta property="og:updated_time" content="2016-05-28T04:46:44.956Z">
+<meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Android开发中为了美观或是和ios风格统一，控件往往设置成圆角，为了使控件有一个点击的效果我们会使用选择器来实现，这里简单介绍一下实现步骤。
+1、给控件设置圆角给控件设置圆角一般可以使用shape标签来实现,这里罗列一些shape的基本属性有一个在线的shape编辑工具地址可以在线完成你想要的效果12345678910111213141516">
+<meta property="og:updated_time" content="2016-05-28T05:41:23.017Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content=" Android应用在内存不足被KILL时如何保存与恢复数据">
-<meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近项目中出现一个bug在登录应用然后HOME键使用其他应用然后回到刚才的应用提示你下线重新登录，找了好久才发现是手机内存不足，应用被系统kill。Android独特的内存机制,导致系统内存不足时会销毁后台的应用,这里我们研究一下应用被销毁后重新加载时的情形一个安卓应用A先后打开3个Activity: a –&amp;gt; b –&amp;gt; c 这个时候如果">
+<meta name="twitter:title" content="Android控件圆角和背景选择器的使用">
+<meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Android开发中为了美观或是和ios风格统一，控件往往设置成圆角，为了使控件有一个点击的效果我们会使用选择器来实现，这里简单介绍一下实现步骤。
+1、给控件设置圆角给控件设置圆角一般可以使用shape标签来实现,这里罗列一些shape的基本属性有一个在线的shape编辑工具地址可以在线完成你想要的效果12345678910111213141516">
 
 
 
@@ -84,7 +87,7 @@
   };
 </script>
 
-  <title>  Android应用在内存不足被KILL时如何保存与恢复数据 | 蛋哥 </title>
+  <title> Android控件圆角和背景选择器的使用 | 蛋哥 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -224,7 +227,7 @@
             
             
               
-                 Android应用在内存不足被KILL时如何保存与恢复数据
+                Android控件圆角和背景选择器的使用
               
             
           </h1>
@@ -236,38 +239,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-05T12:34:10+08:00" content="2016-05-05">
-              2016-05-05
+            <time itemprop="dateCreated" datetime="2016-05-28T13:18:18+08:00" content="2016-05-28">
+              2016-05-28
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/" itemprop="commentsCount"></span>
+                <a href="/2016/05/28/Android控件圆角和背景选择器的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/28/Android控件圆角和背景选择器的使用/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -277,7 +261,7 @@
 
           
           
-             <span id="/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/" class="leancloud_visitors" data-flag-title=" Android应用在内存不足被KILL时如何保存与恢复数据">
+             <span id="/2016/05/28/Android控件圆角和背景选择器的使用/" class="leancloud_visitors" data-flag-title="Android控件圆角和背景选择器的使用">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -298,13 +282,13 @@
       
 
       
-        <p>&#160;&#160;&#160;&#160;<strong>最</strong>近项目中出现一个bug在登录应用然后HOME键使用其他应用然后回到刚才的应用提示你下线重新登录，找了好久才发现是手机内存不足，应用被系统kill。Android独特的内存机制,导致系统内存不足时会销毁后台的应用,这里我们研究一下应用被销毁后重新加载时的情形<br>一个安卓应用A先后打开3个Activity: a –&gt; b –&gt; c 这个时候如果来了一个电话, 接电话的过程中, 手机内存不够, 那么应用A将会被系统回收当打完电话,再次进入应用A的时候会发生下面的事情:<br>1、系统会重新加载c,而且是在新线程中<br>2、现在点返回关闭c,系统就会重新加载b,而且是在新的线程中(跟c不是一个线程)<br>3、现在点返回关闭b,系统就会重新加载a,而且是在新的线程中(跟c,b的线程都不相同)<br>(就是先打开c,finish了c时加载b,finish了b时加载a)</p>
-<p><strong>注意:</strong> 这个时候应用中的全局静态变量将全部重置有默认值的为默认值,没有默认值的为null)</p>
-<p>这时如何你是登录状态并且登录信息保存在全局变量中，那个将会告知你要重新登录，你会说登录信息用SharedPreferences保存用户登录状态，但是有的情况下，银行基金类应用为安全是需要每次打开登录验证通过session控制登录超时的，此时就不适合保存本地。然而后台在内存不足时kill掉应用，难道每次都让用户再次登录吗？我想用户也疯了。当让Android有考虑在应用kill之前有保存数据的机会就是onSaveInstanceState方法。<br>如过对onSaveInstanceState不是很了的，这里有篇博客<a href="http://blog.csdn.net/ddna/article/details/5123482" target="_blank" rel="external">关于Activity的onSaveInstanceState调用时机的说明</a></p>
-<p>onSaveInstanceState方法会在什么时候被执行，有这么几种情况：<br>1、当用户按下HOME键时。<br>这是显而易见的，系统不知道你按下HOME后要运行多少其他的程序，自然也不知道activity A是否会被销毁，故系统会调用onSaveInstanceState，让用户有机会保存某些非永久性的数据。以下几种情况的分析都遵循该原则<br>2、长按HOME键，选择运行其他的程序时。<br>3、按下电源按键（关闭屏幕显示）时。<br>4、从activity A中启动一个新的activity时。<br>5、屏幕方向切换时，例如从竖屏切换到横屏时。<br>在屏幕切换之前，系统会销毁activity A，在屏幕切换之后系统又会自动地创建activity A，所以onSaveInstanceState一定会被执行。<br>6、应用在后台内存不足，系统kill时</p>
-<p>总而言之，onSaveInstanceState的调用遵循一个重要原则，即当系统“未经你许可”时销毁了你的activity，则onSaveInstanceState会被系统调用，这是系统的责任，因为它必须要提供一个机会让你保存你的数据（当然你不保存那就随便你了）。</p>
-<p>那么如何使用onSaveInstanceState来在“未经你许可”时销毁了你的activity时保存数据呢。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">     setContentView(R.layout.activity_main);</span><br><span class="line">     <span class="keyword">if</span> (savedInstanceState!=<span class="keyword">null</span>)&#123;</span><br><span class="line">         String userId=savedInstanceState.getString(<span class="string">"userId"</span>);</span><br><span class="line">         String userName=savedInstanceState.getString(<span class="string">"userName"</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">     outState.putString(<span class="string">"userId"</span>, <span class="number">1234</span> + <span class="string">""</span>);</span><br><span class="line">     outState.putString(<span class="string">"userName"</span>, <span class="string">"4321"</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>具体你可以根据需求保存任何复杂的数据都可以。</p>
+        <p>&#160;&#160;&#160;&#160;<strong>在</strong>Android开发中为了美观或是和ios风格统一，控件往往设置成圆角，为了使控件有一个点击的效果我们会使用选择器来实现，这里简单介绍一下实现步骤。</p>
+<h3 id="1、给控件设置圆角"><a href="#1、给控件设置圆角" class="headerlink" title="1、给控件设置圆角"></a>1、给控件设置圆角</h3><p>给控件设置圆角一般可以使用shape标签来实现,这里罗列一些shape的基本属性<br>有一个在线的shape编辑工具<strong><a href="http://shapes.softartstudio.com/" target="_blank" rel="external">地址</a></strong>可以在线完成你想要的效果<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">//round_bg.xml </span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">       <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--实心   就是填充的意思 color填充的颜色--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#ff0033"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--渐变  android:startColor和android:endColor分别为起始和结束颜色，</span><br><span class="line">            android:angle是渐变角度，必须为45的整数倍。</span><br><span class="line">            另外渐变默认的模式为android:type="linear"，即线性渐变，</span><br><span class="line">            可以指定渐变为径向渐变，android:type="radial"，</span><br><span class="line">            径向渐变需要指定半径android:gradientRadius="50"。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">gradient</span> <span class="attr">android:startColor</span>=<span class="string">"#ffffff"</span></span><br><span class="line">              <span class="attr">android:endColor</span>=<span class="string">"#000000"</span></span><br><span class="line">              <span class="attr">android:angle</span>=<span class="string">"90"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--描边  android:width="2dp"</span><br><span class="line">        描边的宽度，android:color 描边的颜色。</span><br><span class="line">        我们还可以把描边弄成虚线的形式，设置方式为：</span><br><span class="line">        android:dashWidth="5dp"</span><br><span class="line">        android:dashGap="3dp"</span><br><span class="line">       其中android:dashWidth表示'-'这样一个横线的宽度，</span><br><span class="line">       android:dashGap表示之间隔开的距离。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">stroke</span> <span class="attr">android:width</span>=<span class="string">"2dp"</span></span><br><span class="line">            <span class="attr">android:color</span>=<span class="string">"#ff9966"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--圆角--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--android:radius为角的弧度，值越大角越圆。</span><br><span class="line">        我们还可以把四个角设定成不同的角度，方法为：</span><br><span class="line">    &lt;corners</span><br><span class="line">            android:topRightRadius="20dp"    右上角</span><br><span class="line">            android:bottomLeftRadius="20dp"  右下角</span><br><span class="line">            android:topLeftRadius="20dp"     左上角</span><br><span class="line">            android:bottomRightRadius="20dp" 左下角</span><br><span class="line">     /&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"5dp"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--padding 这个就不用多说了，XML布局文件中经常用到--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">padding</span></span><br><span class="line">        <span class="attr">android:left</span>=<span class="string">"1dp"</span></span><br><span class="line">        <span class="attr">android:right</span>=<span class="string">"2dp"</span></span><br><span class="line">        <span class="attr">android:top</span>=<span class="string">"3dp"</span></span><br><span class="line">        <span class="attr">android:bottom</span>=<span class="string">"4dp"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用圆角，直接给TextView、Button、ImageView或其他控件加上background<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:background="@drawable/round_bg"</span><br></pre></td></tr></table></figure></p>
+<p>就可以实现了，根据自己的需求添加相应的属性就可以。</p>
+<h3 id="2、背景选择器"><a href="#2、背景选择器" class="headerlink" title="2、背景选择器"></a>2、背景选择器</h3><p>背景选择器我们会使用selector标签来实现，基本属性和使用<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//background_selector.xml</span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 没有焦点时的背景图片 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span> <span class="attr">android:state_window_focused</span>=<span class="string">"false"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 获得焦点时的图片背景 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg4"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 触摸模式按下时的背景图片 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span>  <span class="attr">android:state_pressed</span>=<span class="string">"true"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg2"</span>  /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span>  <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg3"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span>  <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg4"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span><br><span class="line">    android:state_selected是选中</span><br><span class="line">    android:state_focused是获得焦点</span><br><span class="line">    android:state_pressed是点击</span><br><span class="line">    android:state_enabled是设置是否响应事件,指所有事件</span><br><span class="line">    --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用背景选择器也很简单，只需要在你要使用的控件加上background<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:background="@drawable/background_selector"</span><br></pre></td></tr></table></figure></p>
+<p>也就是把你刚才写的背景选择器作为背景属性使用就可以了。</p>
 
       
     </div>
@@ -334,17 +318,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/16/Android性能检测—工具/" rel="next" title="Android性能检测工具">
-                <i class="fa fa-chevron-left"></i> Android性能检测工具
+              <a href="/2016/05/15/Android中Parcelable和Serializable的区别/" rel="next" title="Android中Parcelable和Serializable的区别">
+                <i class="fa fa-chevron-left"></i> Android中Parcelable和Serializable的区别
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/15/Android中Parcelable和Serializable的区别/" rel="prev" title="Android中Parcelable和Serializable的区别">
-                Android中Parcelable和Serializable的区别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -359,10 +339,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/"
-     data-title=" Android应用在内存不足被KILL时如何保存与恢复数据"
+        <div class="ds-share flat" data-thread-key="2016/05/28/Android控件圆角和背景选择器的使用/"
+     data-title="Android控件圆角和背景选择器的使用"
      data-content=""
-     data-url="http://yoursite.com/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/">
+     data-url="http://yoursite.com/2016/05/28/Android控件圆角和背景选择器的使用/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -389,8 +369,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/"
-           data-title=" Android应用在内存不足被KILL时如何保存与恢复数据" data-url="http://yoursite.com/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/">
+      <div class="ds-thread" data-thread-key="2016/05/28/Android控件圆角和背景选择器的使用/"
+           data-title="Android控件圆角和背景选择器的使用" data-url="http://yoursite.com/2016/05/28/Android控件圆角和背景选择器的使用/">
       </div>
     
   </div>
@@ -503,7 +483,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、给控件设置圆角"><span class="nav-number">1.</span> <span class="nav-text">1、给控件设置圆角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、背景选择器"><span class="nav-number">2.</span> <span class="nav-text">2、背景选择器</span></a></li></ol></div>
             
           </div>
         </section>

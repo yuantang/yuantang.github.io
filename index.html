@@ -226,6 +226,121 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/28/Android控件圆角和背景选择器的使用/" itemprop="url">
+                  Android控件圆角和背景选择器的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-28T13:18:18+08:00" content="2016-05-28">
+              2016-05-28
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/28/Android控件圆角和背景选择器的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/28/Android控件圆角和背景选择器的使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/28/Android控件圆角和背景选择器的使用/" class="leancloud_visitors" data-flag-title="Android控件圆角和背景选择器的使用">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#160;&#160;&#160;&#160;<strong>在</strong>Android开发中为了美观或是和ios风格统一，控件往往设置成圆角，为了使控件有一个点击的效果我们会使用选择器来实现，这里简单介绍一下实现步骤。</p>
+<h3 id="1、给控件设置圆角"><a href="#1、给控件设置圆角" class="headerlink" title="1、给控件设置圆角"></a>1、给控件设置圆角</h3><p>给控件设置圆角一般可以使用shape标签来实现,这里罗列一些shape的基本属性<br>有一个在线的shape编辑工具<strong><a href="http://shapes.softartstudio.com/" target="_blank" rel="external">地址</a></strong>可以在线完成你想要的效果<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">//round_bg.xml </span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">       <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--实心   就是填充的意思 color填充的颜色--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#ff0033"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--渐变  android:startColor和android:endColor分别为起始和结束颜色，</span><br><span class="line">            android:angle是渐变角度，必须为45的整数倍。</span><br><span class="line">            另外渐变默认的模式为android:type="linear"，即线性渐变，</span><br><span class="line">            可以指定渐变为径向渐变，android:type="radial"，</span><br><span class="line">            径向渐变需要指定半径android:gradientRadius="50"。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">gradient</span> <span class="attr">android:startColor</span>=<span class="string">"#ffffff"</span></span><br><span class="line">              <span class="attr">android:endColor</span>=<span class="string">"#000000"</span></span><br><span class="line">              <span class="attr">android:angle</span>=<span class="string">"90"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--描边  android:width="2dp"</span><br><span class="line">        描边的宽度，android:color 描边的颜色。</span><br><span class="line">        我们还可以把描边弄成虚线的形式，设置方式为：</span><br><span class="line">        android:dashWidth="5dp"</span><br><span class="line">        android:dashGap="3dp"</span><br><span class="line">       其中android:dashWidth表示'-'这样一个横线的宽度，</span><br><span class="line">       android:dashGap表示之间隔开的距离。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">stroke</span> <span class="attr">android:width</span>=<span class="string">"2dp"</span></span><br><span class="line">            <span class="attr">android:color</span>=<span class="string">"#ff9966"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--圆角--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--android:radius为角的弧度，值越大角越圆。</span><br><span class="line">        我们还可以把四个角设定成不同的角度，方法为：</span><br><span class="line">    &lt;corners</span><br><span class="line">            android:topRightRadius="20dp"    右上角</span><br><span class="line">            android:bottomLeftRadius="20dp"  右下角</span><br><span class="line">            android:topLeftRadius="20dp"     左上角</span><br><span class="line">            android:bottomRightRadius="20dp" 左下角</span><br><span class="line">     /&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"5dp"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--padding 这个就不用多说了，XML布局文件中经常用到--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">padding</span></span><br><span class="line">        <span class="attr">android:left</span>=<span class="string">"1dp"</span></span><br><span class="line">        <span class="attr">android:right</span>=<span class="string">"2dp"</span></span><br><span class="line">        <span class="attr">android:top</span>=<span class="string">"3dp"</span></span><br><span class="line">        <span class="attr">android:bottom</span>=<span class="string">"4dp"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用圆角，直接给TextView、Button、ImageView或其他控件加上background<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:background="@drawable/round_bg"</span><br></pre></td></tr></table></figure></p>
+<p>就可以实现了，根据自己的需求添加相应的属性就可以。</p>
+<h3 id="2、背景选择器"><a href="#2、背景选择器" class="headerlink" title="2、背景选择器"></a>2、背景选择器</h3><p>背景选择器我们会使用selector标签来实现，基本属性和使用<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//background_selector.xml</span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 没有焦点时的背景图片 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span> <span class="attr">android:state_window_focused</span>=<span class="string">"false"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 获得焦点时的图片背景 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg4"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 触摸模式按下时的背景图片 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span>  <span class="attr">android:state_pressed</span>=<span class="string">"true"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg2"</span>  /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span>  <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg3"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span>  <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg4"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span><br><span class="line">    android:state_selected是选中</span><br><span class="line">    android:state_focused是获得焦点</span><br><span class="line">    android:state_pressed是点击</span><br><span class="line">    android:state_enabled是设置是否响应事件,指所有事件</span><br><span class="line">    --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用背景选择器也很简单，只需要在你要使用的控件加上background<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:background="@drawable/background_selector"</span><br></pre></td></tr></table></figure></p>
+<p>也就是把你刚才写的背景选择器作为背景属性使用就可以了。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/15/Android中Parcelable和Serializable的区别/" itemprop="url">
                   Android中Parcelable和Serializable的区别
                 </a>
@@ -1329,7 +1444,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
