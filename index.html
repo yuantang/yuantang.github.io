@@ -226,6 +226,134 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/15/Android中Parcelable和Serializable的区别/" itemprop="url">
+                  Android中Parcelable和Serializable的区别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-15T02:30:25+08:00" content="2016-05-15">
+              2016-05-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/15/Android中Parcelable和Serializable的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/15/Android中Parcelable和Serializable的区别/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/15/Android中Parcelable和Serializable的区别/" class="leancloud_visitors" data-flag-title="Android中Parcelable和Serializable的区别">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&#160;&#160;&#160;&#160;<strong>在</strong>Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？</p>
+<h3 id="1、对象序列化的作用："><a href="#1、对象序列化的作用：" class="headerlink" title="1、对象序列化的作用："></a>1、对象序列化的作用：</h3><p>java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：</p>
+<blockquote>
+<p>1)永久性保存对象，保存对象的字节序列到本地文件中；<br>2)通过序列化对象在网络中传递对象；<br>3)通过序列化在进程间传递对象。     </p>
+</blockquote>
+<h3 id="2、两者的区别："><a href="#2、两者的区别：" class="headerlink" title="2、两者的区别："></a>2、两者的区别：</h3><p>java开发者都是知道Serializable的实现机制和作用，有人会问为什么Android又引入Parcelable呢？他们的区别是：</p>
+<blockquote>
+<p>Serializable的作用是为了保存对象的属性到本地文件、数据库、网络流、rmi以方便数据传输，当然这种传输可以是程序内的也可以是两个程序间的。而Android的Parcelable的设计初衷是因为Serializable效率过慢，为了在程序内不同组件间以及不同Android程序间(AIDL)高效的传输数据而设计，这些数据仅在内存中存在，Parcelable是通过IBinder通信的消息的载体。</p>
+</blockquote>
+<p>总结就是两者在于存储媒介的不同，Serializable使用IO读写存储在硬盘上，而Parcelable是直接在内存中读写，优缺点也就很直白了：</p>
+<blockquote>
+<p>1）在使用内存的时候，Parcelable类比Serializable性能高，所以推荐使用Parcelable类。<br>2）Serializable在序列化的时候会产生大量的临时变量，从而引起频繁的GC。<br>3）Parcelable不能使用在要将数据存储在磁盘上的情况，因为Parcelable不能很好的保证数据的持续性在外界有变化的情况下。尽管Serializable效率低点，也不提倡用，但在这种情况下，还是建议你用Serializable 。</p>
+</blockquote>
+<h3 id="3、各自的实现方式："><a href="#3、各自的实现方式：" class="headerlink" title="3、各自的实现方式："></a>3、各自的实现方式：</h3><p>Serializable很简单<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserSer</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    String code;</span><br><span class="line">    String message;</span><br><span class="line">    String user;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Parcelable 实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserPar</span> <span class="keyword">implements</span> <span class="title">Parcelable</span>  </span>&#123; <span class="comment">//(1)实现Parcelable接口</span></span><br><span class="line">    <span class="comment">//(2)添加实体属性</span></span><br><span class="line">    <span class="keyword">private</span>   String code;</span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line">    <span class="keyword">private</span> String user;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">UserPar</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">        code = in.readString();</span><br><span class="line">        message = in.readString();</span><br><span class="line">        user = in.readString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//(3)覆写writeToParcel(Parcel dest, int flags)方法，指定写入Parcel类的数据。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest, <span class="keyword">int</span> flags)</span> </span>&#123;</span><br><span class="line">        dest.writeString(code);</span><br><span class="line">        dest.writeString(message);</span><br><span class="line">        dest.writeString(user);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// (4)创建Parcelable.Creator静态对象，有两个方法createFromParcel(Parcel in)与newArray(int size)，</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Creator&lt;UserPar&gt; CREATOR = <span class="keyword">new</span> Creator&lt;UserPar&gt;() &#123;</span><br><span class="line">      <span class="comment">//Parcel中读取出数据对象</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> UserPar <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> UserPar(in);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//创建一个数组</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> UserPar[] newArray(<span class="keyword">int</span> size) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> UserPar[size];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//(5) 覆写describeContents方法，默认返回0。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到Parcelable具体的写入（dest.writeInt(mAge);）与读取（gril.mAge = in.readInt();）都是针对Parcel对象进行的操作的</p>
+<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20151228153441509.png" alt="这里写图片描述"></p>
+<p>进入Parcel你会发现基本上都是都是native方法</p>
+<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20151228153844334.png" alt="这里写图片描述"></p>
+<p> 所以Android中对象序列化是最好使用Parcelable 。</p>
+
+          
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/" itemprop="url">
                    Android应用在内存不足被KILL时如何保存与恢复数据
                 </a>
@@ -1201,7 +1329,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

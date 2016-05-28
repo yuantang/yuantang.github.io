@@ -57,46 +57,22 @@
 
 
 
-<meta name="description" content="写在开头的话&amp;#160; &amp;#160; &amp;#160; &amp;#160;参与客户端开发的都程序员都知道客户端的开发的时候常常要依赖于服务端的开发，经常客户端发开进度受影响，原因有几点：
-
-服务端开发人员接口没有写好，自己写测试数据有些场景不太容易满足
-受网络影响很大，尤其是测试服务器很多不确定因素就挂了
-测试服务器在远程或是重启服务器耽搁时间
-………
-
-所以为了解决这种问题我们可以使用moco轻松解决客">
+<meta name="description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？
+1、对象序列化的作用：java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Moco实现客户端与服务端解耦">
-<meta property="og:url" content="http://yoursite.com/2016/04/13/Moco实现客户端与服务端解耦/index.html">
+<meta property="og:title" content="Android中Parcelable和Serializable的区别">
+<meta property="og:url" content="http://yoursite.com/2016/05/15/Android中Parcelable和Serializable的区别/index.html">
 <meta property="og:site_name" content="蛋哥">
-<meta property="og:description" content="写在开头的话&amp;#160; &amp;#160; &amp;#160; &amp;#160;参与客户端开发的都程序员都知道客户端的开发的时候常常要依赖于服务端的开发，经常客户端发开进度受影响，原因有几点：
-
-服务端开发人员接口没有写好，自己写测试数据有些场景不太容易满足
-受网络影响很大，尤其是测试服务器很多不确定因素就挂了
-测试服务器在远程或是重启服务器耽搁时间
-………
-
-所以为了解决这种问题我们可以使用moco轻松解决客">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20150913113011211.png">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20150913113354901.png">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20150913130116233.png">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20150913130431384.png">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20150913130642373.png">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20150913134731606.png">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20150913132803042.png">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20150913133039886.png">
-<meta property="og:updated_time" content="2016-04-14T00:56:15.055Z">
+<meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？
+1、对象序列化的作用：java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：">
+<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20151228153441509.png">
+<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20151228153844334.png">
+<meta property="og:updated_time" content="2016-05-28T05:13:23.044Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Moco实现客户端与服务端解耦">
-<meta name="twitter:description" content="写在开头的话&amp;#160; &amp;#160; &amp;#160; &amp;#160;参与客户端开发的都程序员都知道客户端的开发的时候常常要依赖于服务端的开发，经常客户端发开进度受影响，原因有几点：
-
-服务端开发人员接口没有写好，自己写测试数据有些场景不太容易满足
-受网络影响很大，尤其是测试服务器很多不确定因素就挂了
-测试服务器在远程或是重启服务器耽搁时间
-………
-
-所以为了解决这种问题我们可以使用moco轻松解决客">
-<meta name="twitter:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20150913113011211.png">
+<meta name="twitter:title" content="Android中Parcelable和Serializable的区别">
+<meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？
+1、对象序列化的作用：java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：">
+<meta name="twitter:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20151228153441509.png">
 
 
 
@@ -114,7 +90,7 @@
   };
 </script>
 
-  <title> Moco实现客户端与服务端解耦 | 蛋哥 </title>
+  <title> Android中Parcelable和Serializable的区别 | 蛋哥 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -254,7 +230,7 @@
             
             
               
-                Moco实现客户端与服务端解耦
+                Android中Parcelable和Serializable的区别
               
             
           </h1>
@@ -266,38 +242,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-13T22:49:10+08:00" content="2016-04-13">
-              2016-04-13
+            <time itemprop="dateCreated" datetime="2016-05-15T02:30:25+08:00" content="2016-05-15">
+              2016-05-15
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/13/Moco实现客户端与服务端解耦/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/13/Moco实现客户端与服务端解耦/" itemprop="commentsCount"></span>
+                <a href="/2016/05/15/Android中Parcelable和Serializable的区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/15/Android中Parcelable和Serializable的区别/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -307,7 +264,7 @@
 
           
           
-             <span id="/2016/04/13/Moco实现客户端与服务端解耦/" class="leancloud_visitors" data-flag-title="Moco实现客户端与服务端解耦">
+             <span id="/2016/05/15/Android中Parcelable和Serializable的区别/" class="leancloud_visitors" data-flag-title="Android中Parcelable和Serializable的区别">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -328,38 +285,26 @@
       
 
       
-        <p><strong>写在开头的话</strong><br>&#160; &#160; &#160; &#160;<strong>参</strong>与客户端开发的都程序员都知道客户端的开发的时候常常要依赖于服务端的开发，经常客户端发开进度受影响，原因有几点：</p>
-<ul>
-<li>服务端开发人员接口没有写好，自己写测试数据有些场景不太容易满足</li>
-<li>受网络影响很大，尤其是测试服务器很多不确定因素就挂了</li>
-<li>测试服务器在远程或是重启服务器耽搁时间</li>
-<li>………</li>
-</ul>
-<p>所以为了解决这种问题我们可以使用moco轻松解决客户端与服务解耦问题，是客户端的开发不在依赖服务端，从而提高开发效率。</p>
-<hr>
-<h3 id="1、什么是MOCO"><a href="#1、什么是MOCO" class="headerlink" title="1、什么是MOCO"></a>1、什么是MOCO</h3><p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913113011211.png" alt="这里写图片描述"><br>简单的说MOCO是一款基于Java开发、用来简单搭建模拟服务器的程序库。MOCO的目的，旨在解决企业级系统集成测试等方面的问题。不光如此他还有一起其他的应用场景：</p>
-<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913113354901.png" alt="这里写图片描述"><br>就是通过MOCO模拟服务端，实现客户端与服务器端解耦，在移动开发中，有人开发一个移动应用，需要有一个远端服务，但在开发时，这个服务还不存在，他就用Moco模拟了一个服务，保证移动应用可以顺利的开发。</p>
-<h3 id="2、如何使用现客户端与服务端的解耦"><a href="#2、如何使用现客户端与服务端的解耦" class="headerlink" title="2、如何使用现客户端与服务端的解耦"></a>2、如何使用现客户端与服务端的解耦</h3><h4 id="1-首先要确保Java环境没有问题，安转JDK，并设置好环境变量"><a href="#1-首先要确保Java环境没有问题，安转JDK，并设置好环境变量" class="headerlink" title="(1)首先要确保Java环境没有问题，安转JDK，并设置好环境变量"></a>(1)首先要确保Java环境没有问题，安转JDK，并设置好环境变量</h4><h4 id="2-接下来，按照下面的步骤安装MOCO"><a href="#2-接下来，按照下面的步骤安装MOCO" class="headerlink" title="(2)接下来，按照下面的步骤安装MOCO"></a>(2)接下来，按照下面的步骤安装MOCO</h4><ol>
-<li>直接下载编译好的 Jar 文件， <a href="https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.10.2/moco-runner-0.10.2-standalone.jar" target="_blank" rel="external">下载地址</a> </li>
-<li>编写配置文件，以简单的 Hello World 为例<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913130116233.png" alt="这里写图片描述"><br>将文件以 json 的后缀存储，比如 hello.json 我保存在桌面上。</li>
-<li>启动Moco服务<br>&#160; &#160; &#160; &#160;<strong>在命令行输入</strong><br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913130431384.png" alt="这里写图片描述"></li>
-<li>访问Web服务<br>&#160; &#160; &#160; &#160;<strong>打开浏览器，访问<a href="http://localhost:12306" target="_blank" rel="external">http://localhost:12306</a></strong><br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913130642373.png" alt="这里写图片描述"><br>以上只是最简单的一个实现。下面我将介绍一下复杂的实例，也是直接可以用在项目开发中的客户端与服务端解耦的实现。</li>
-</ol>
-<h4 id="3-高级用法"><a href="#3-高级用法" class="headerlink" title="(3)高级用法"></a>(3)高级用法</h4><p>带参数的 HTTP 请求，有些时候我们希望能够在请求的同时，传递相应的参数。这时我们需要用到”queries”关键字</p>
-<ol>
-<li>编写配置文件<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913134731606.png" alt="这里写图片描述"></li>
-<li>启动Moco服务<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913132803042.png" alt="这里写图片描述"><br>&#160; &#160; &#160; &#160;</li>
-<li>请求数据<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913133039886.png" alt="这里写图片描述"><br>就这么简单，只要开发之前和服务器开发人员定义好接口名称，请求参数，放回数据类型和数据格式，完全可以使用moco自己配置一个模拟服务器，简单快速，客户端开发就不再受接口、网速的限制了，这个方法同样适用于前端开发。<br>在Moco中你还可以发现一些好玩的，或者说高级用法。具体用法还是参考 <a href="https://github.com/dreamhead/moco/blob/master/moco-doc/usage.md" target="_blank" rel="external">Moco 的文档</a>。</li>
-</ol>
-<hr>
-<p><strong>写在结尾的话</strong><br>&#160; &#160; &#160; &#160;Moco的价值完全不是只有这一点点的，开始说过MOCO的目的，旨在解决企业级系统集成测试等方面的问题，在web开发集成测试方面还有很多用处，感兴趣的可以自己去研究一下，这里有一些关于moco的介绍的连接，希望对你有帮助：</p>
+        <p>&#160;&#160;&#160;&#160;<strong>在</strong>Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？</p>
+<h3 id="1、对象序列化的作用："><a href="#1、对象序列化的作用：" class="headerlink" title="1、对象序列化的作用："></a>1、对象序列化的作用：</h3><p>java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：</p>
 <blockquote>
-<ul>
-<li><a href="https://github.com/dreamhead/moco" target="_blank" rel="external">github源码地址</a>  </li>
-<li><a href="http://www.ibm.com/developerworks/cn/web/1405_liugang_mocowebtest/" target="_blank" rel="external">Moco 框架以及其在 Web  集成测试的应用</a></li>
-<li><a href="http://www.csdn.net/article/2013-08-23/2816684-Moco-Java-framework" target="_blank" rel="external">郑晔谈Moco框架的前世今生以及Java编程之道</a></li>
-</ul>
+<p>1)永久性保存对象，保存对象的字节序列到本地文件中；<br>2)通过序列化对象在网络中传递对象；<br>3)通过序列化在进程间传递对象。     </p>
 </blockquote>
+<h3 id="2、两者的区别："><a href="#2、两者的区别：" class="headerlink" title="2、两者的区别："></a>2、两者的区别：</h3><p>java开发者都是知道Serializable的实现机制和作用，有人会问为什么Android又引入Parcelable呢？他们的区别是：</p>
+<blockquote>
+<p>Serializable的作用是为了保存对象的属性到本地文件、数据库、网络流、rmi以方便数据传输，当然这种传输可以是程序内的也可以是两个程序间的。而Android的Parcelable的设计初衷是因为Serializable效率过慢，为了在程序内不同组件间以及不同Android程序间(AIDL)高效的传输数据而设计，这些数据仅在内存中存在，Parcelable是通过IBinder通信的消息的载体。</p>
+</blockquote>
+<p>总结就是两者在于存储媒介的不同，Serializable使用IO读写存储在硬盘上，而Parcelable是直接在内存中读写，优缺点也就很直白了：</p>
+<blockquote>
+<p>1）在使用内存的时候，Parcelable类比Serializable性能高，所以推荐使用Parcelable类。<br>2）Serializable在序列化的时候会产生大量的临时变量，从而引起频繁的GC。<br>3）Parcelable不能使用在要将数据存储在磁盘上的情况，因为Parcelable不能很好的保证数据的持续性在外界有变化的情况下。尽管Serializable效率低点，也不提倡用，但在这种情况下，还是建议你用Serializable 。</p>
+</blockquote>
+<h3 id="3、各自的实现方式："><a href="#3、各自的实现方式：" class="headerlink" title="3、各自的实现方式："></a>3、各自的实现方式：</h3><p>Serializable很简单<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserSer</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    String code;</span><br><span class="line">    String message;</span><br><span class="line">    String user;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Parcelable 实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserPar</span> <span class="keyword">implements</span> <span class="title">Parcelable</span>  </span>&#123; <span class="comment">//(1)实现Parcelable接口</span></span><br><span class="line">    <span class="comment">//(2)添加实体属性</span></span><br><span class="line">    <span class="keyword">private</span>   String code;</span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line">    <span class="keyword">private</span> String user;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">UserPar</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">        code = in.readString();</span><br><span class="line">        message = in.readString();</span><br><span class="line">        user = in.readString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//(3)覆写writeToParcel(Parcel dest, int flags)方法，指定写入Parcel类的数据。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest, <span class="keyword">int</span> flags)</span> </span>&#123;</span><br><span class="line">        dest.writeString(code);</span><br><span class="line">        dest.writeString(message);</span><br><span class="line">        dest.writeString(user);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// (4)创建Parcelable.Creator静态对象，有两个方法createFromParcel(Parcel in)与newArray(int size)，</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Creator&lt;UserPar&gt; CREATOR = <span class="keyword">new</span> Creator&lt;UserPar&gt;() &#123;</span><br><span class="line">      <span class="comment">//Parcel中读取出数据对象</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> UserPar <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> UserPar(in);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//创建一个数组</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> UserPar[] newArray(<span class="keyword">int</span> size) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> UserPar[size];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//(5) 覆写describeContents方法，默认返回0。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到Parcelable具体的写入（dest.writeInt(mAge);）与读取（gril.mAge = in.readInt();）都是针对Parcel对象进行的操作的</p>
+<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20151228153441509.png" alt="这里写图片描述"></p>
+<p>进入Parcel你会发现基本上都是都是native方法</p>
+<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20151228153844334.png" alt="这里写图片描述"></p>
+<p> 所以Android中对象序列化是最好使用Parcelable 。</p>
 
       
     </div>
@@ -389,17 +334,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/04/13/Crash-收集器/" rel="next" title="Crash 收集器">
-                <i class="fa fa-chevron-left"></i> Crash 收集器
+              <a href="/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/" rel="next" title=" Android应用在内存不足被KILL时如何保存与恢复数据">
+                <i class="fa fa-chevron-left"></i>  Android应用在内存不足被KILL时如何保存与恢复数据
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/16/Android性能检测—工具/" rel="prev" title="Android性能检测工具">
-                Android性能检测工具 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -414,10 +355,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/04/13/Moco实现客户端与服务端解耦/"
-     data-title="Moco实现客户端与服务端解耦"
+        <div class="ds-share flat" data-thread-key="2016/05/15/Android中Parcelable和Serializable的区别/"
+     data-title="Android中Parcelable和Serializable的区别"
      data-content=""
-     data-url="http://yoursite.com/2016/04/13/Moco实现客户端与服务端解耦/">
+     data-url="http://yoursite.com/2016/05/15/Android中Parcelable和Serializable的区别/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -444,8 +385,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/13/Moco实现客户端与服务端解耦/"
-           data-title="Moco实现客户端与服务端解耦" data-url="http://yoursite.com/2016/04/13/Moco实现客户端与服务端解耦/">
+      <div class="ds-thread" data-thread-key="2016/05/15/Android中Parcelable和Serializable的区别/"
+           data-title="Android中Parcelable和Serializable的区别" data-url="http://yoursite.com/2016/05/15/Android中Parcelable和Serializable的区别/">
       </div>
     
   </div>
@@ -558,7 +499,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、什么是MOCO"><span class="nav-number">1.</span> <span class="nav-text">1、什么是MOCO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、如何使用现客户端与服务端的解耦"><span class="nav-number">2.</span> <span class="nav-text">2、如何使用现客户端与服务端的解耦</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-首先要确保Java环境没有问题，安转JDK，并设置好环境变量"><span class="nav-number">2.1.</span> <span class="nav-text">(1)首先要确保Java环境没有问题，安转JDK，并设置好环境变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-接下来，按照下面的步骤安装MOCO"><span class="nav-number">2.2.</span> <span class="nav-text">(2)接下来，按照下面的步骤安装MOCO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-高级用法"><span class="nav-number">2.3.</span> <span class="nav-text">(3)高级用法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、对象序列化的作用："><span class="nav-number">1.</span> <span class="nav-text">1、对象序列化的作用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、两者的区别："><span class="nav-number">2.</span> <span class="nav-text">2、两者的区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、各自的实现方式："><span class="nav-number">3.</span> <span class="nav-text">3、各自的实现方式：</span></a></li></ol></div>
             
           </div>
         </section>
