@@ -226,6 +226,150 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/03/view-事件传递/" itemprop="url">
+                  view 事件传递
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-03T14:34:59+08:00" content="2016-06-03">
+              2016-06-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/03/view-事件传递/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/03/view-事件传递/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/03/view-事件传递/" class="leancloud_visitors" data-flag-title="view 事件传递">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>&#160;&#160;&#160;&#160;<strong>最</strong>近项目上遇到复杂的界面事件冲突问题，解决了问题现在整理记录一下view的事件的分发机制。</p>
+<h3 id="1、基础知识"><a href="#1、基础知识" class="headerlink" title="1、基础知识"></a>1、基础知识</h3><h4 id="1-事件处理类："><a href="#1-事件处理类：" class="headerlink" title="(1)事件处理类："></a>(1)事件处理类：</h4><ul>
+<li>事件传递——dispatchTouchEvent()</li>
+<li>事件拦截——onInterceptTouchEvent()</li>
+<li>事件消费——onTouchEvent()函数和OnTouchListener</li>
+</ul>
+<h4 id="2-事件类型："><a href="#2-事件类型：" class="headerlink" title="(2)事件类型："></a>(2)事件类型：</h4><ul>
+<li>ACTION_DOWN：表示用户开始触摸.</li>
+<li>ACTION_UP：表示用户在移动(手指或者其他).</li>
+<li>ACTION_MOVE：表示用户抬起了手指. </li>
+<li>ACTION_OUTSIDE: 表示用户触碰超出了正常的UI边界.</li>
+<li>ACTION_CANCEL:表示手势被取消了<br>  多点触控的支持</li>
+<li>ACTION_POINTER_DOWN:有一个非主要的手指按下了.</li>
+<li>ACTION_POINTER_UP:一个非主要的手指抬起来了.</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/03/view-事件传递/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/28/Android控件圆角和背景选择器的使用/" itemprop="url">
                   Android控件圆角和背景选择器的使用
                 </a>
@@ -284,16 +428,13 @@
 
       
         
-          
-            <p>&#160;&#160;&#160;&#160;<strong>在</strong>Android开发中为了美观或是和ios风格统一，控件往往设置成圆角，为了使控件有一个点击的效果我们会使用选择器来实现，这里简单介绍一下实现步骤。</p>
-<h3 id="1、给控件设置圆角"><a href="#1、给控件设置圆角" class="headerlink" title="1、给控件设置圆角"></a>1、给控件设置圆角</h3><p>给控件设置圆角一般可以使用shape标签来实现,这里罗列一些shape的基本属性<br>有一个在线的shape编辑工具<strong><a href="http://shapes.softartstudio.com/" target="_blank" rel="external">地址</a></strong>可以在线完成你想要的效果<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">//round_bg.xml </span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">       <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--实心   就是填充的意思 color填充的颜色--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#ff0033"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--渐变  android:startColor和android:endColor分别为起始和结束颜色，</span><br><span class="line">            android:angle是渐变角度，必须为45的整数倍。</span><br><span class="line">            另外渐变默认的模式为android:type="linear"，即线性渐变，</span><br><span class="line">            可以指定渐变为径向渐变，android:type="radial"，</span><br><span class="line">            径向渐变需要指定半径android:gradientRadius="50"。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">gradient</span> <span class="attr">android:startColor</span>=<span class="string">"#ffffff"</span></span><br><span class="line">              <span class="attr">android:endColor</span>=<span class="string">"#000000"</span></span><br><span class="line">              <span class="attr">android:angle</span>=<span class="string">"90"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--描边  android:width="2dp"</span><br><span class="line">        描边的宽度，android:color 描边的颜色。</span><br><span class="line">        我们还可以把描边弄成虚线的形式，设置方式为：</span><br><span class="line">        android:dashWidth="5dp"</span><br><span class="line">        android:dashGap="3dp"</span><br><span class="line">       其中android:dashWidth表示'-'这样一个横线的宽度，</span><br><span class="line">       android:dashGap表示之间隔开的距离。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">stroke</span> <span class="attr">android:width</span>=<span class="string">"2dp"</span></span><br><span class="line">            <span class="attr">android:color</span>=<span class="string">"#ff9966"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--圆角--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--android:radius为角的弧度，值越大角越圆。</span><br><span class="line">        我们还可以把四个角设定成不同的角度，方法为：</span><br><span class="line">    &lt;corners</span><br><span class="line">            android:topRightRadius="20dp"    右上角</span><br><span class="line">            android:bottomLeftRadius="20dp"  右下角</span><br><span class="line">            android:topLeftRadius="20dp"     左上角</span><br><span class="line">            android:bottomRightRadius="20dp" 左下角</span><br><span class="line">     /&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"5dp"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--padding 这个就不用多说了，XML布局文件中经常用到--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">padding</span></span><br><span class="line">        <span class="attr">android:left</span>=<span class="string">"1dp"</span></span><br><span class="line">        <span class="attr">android:right</span>=<span class="string">"2dp"</span></span><br><span class="line">        <span class="attr">android:top</span>=<span class="string">"3dp"</span></span><br><span class="line">        <span class="attr">android:bottom</span>=<span class="string">"4dp"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>使用圆角，直接给TextView、Button、ImageView或其他控件加上background<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:background="@drawable/round_bg"</span><br></pre></td></tr></table></figure></p>
-<p>就可以实现了，根据自己的需求添加相应的属性就可以。</p>
-<h3 id="2、背景选择器"><a href="#2、背景选择器" class="headerlink" title="2、背景选择器"></a>2、背景选择器</h3><p>背景选择器我们会使用selector标签来实现，基本属性和使用<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">//background_selector.xml</span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">selector</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 没有焦点时的背景图片 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span> <span class="attr">android:state_window_focused</span>=<span class="string">"false"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 获得焦点时的图片背景 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg4"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- 触摸模式按下时的背景图片 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span>  <span class="attr">android:state_pressed</span>=<span class="string">"true"</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg2"</span>  /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_focused</span>=<span class="string">"true"</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span>  <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg3"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:state_enabled</span>=<span class="string">"true"</span>  <span class="attr">android:drawable</span>=<span class="string">"@drawable/round_bg4"</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--</span><br><span class="line">    android:state_selected是选中</span><br><span class="line">    android:state_focused是获得焦点</span><br><span class="line">    android:state_pressed是点击</span><br><span class="line">    android:state_enabled是设置是否响应事件,指所有事件</span><br><span class="line">    --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">selector</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>使用背景选择器也很简单，只需要在你要使用的控件加上background<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">android:background="@drawable/background_selector"</span><br></pre></td></tr></table></figure></p>
-<p>也就是把你刚才写的背景选择器作为背景属性使用就可以了。</p>
-
-          
+          <p>&#160;&#160;&#160;&#160;<strong>在</strong>Android开发中为了美观或是和ios风格统一，控件往往设置成圆角，为了使控件有一个点击的效果我们会使用选择器来实现，这里简单介绍一下实现步骤。</p>
+<h3 id="1、给控件设置圆角"><a href="#1、给控件设置圆角" class="headerlink" title="1、给控件设置圆角"></a>1、给控件设置圆角</h3><p>给控件设置圆角一般可以使用shape标签来实现,这里罗列一些shape的基本属性<br>有一个在线的shape编辑工具<strong><a href="http://shapes.softartstudio.com/">地址</a></strong>可以在线完成你想要的效果<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">//round_bg.xml </span><br><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">shape</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">       <span class="attr">android:shape</span>=<span class="string">"rectangle"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--实心   就是填充的意思 color填充的颜色--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">solid</span> <span class="attr">android:color</span>=<span class="string">"#ff0033"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--渐变  android:startColor和android:endColor分别为起始和结束颜色，</span><br><span class="line">            android:angle是渐变角度，必须为45的整数倍。</span><br><span class="line">            另外渐变默认的模式为android:type="linear"，即线性渐变，</span><br><span class="line">            可以指定渐变为径向渐变，android:type="radial"，</span><br><span class="line">            径向渐变需要指定半径android:gradientRadius="50"。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">gradient</span> <span class="attr">android:startColor</span>=<span class="string">"#ffffff"</span></span><br><span class="line">              <span class="attr">android:endColor</span>=<span class="string">"#000000"</span></span><br><span class="line">              <span class="attr">android:angle</span>=<span class="string">"90"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--描边  android:width="2dp"</span><br><span class="line">        描边的宽度，android:color 描边的颜色。</span><br><span class="line">        我们还可以把描边弄成虚线的形式，设置方式为：</span><br><span class="line">        android:dashWidth="5dp"</span><br><span class="line">        android:dashGap="3dp"</span><br><span class="line">       其中android:dashWidth表示'-'这样一个横线的宽度，</span><br><span class="line">       android:dashGap表示之间隔开的距离。--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">stroke</span> <span class="attr">android:width</span>=<span class="string">"2dp"</span></span><br><span class="line">            <span class="attr">android:color</span>=<span class="string">"#ff9966"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--圆角--&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--android:radius为角的弧度，值越大角越圆。</span><br><span class="line">        我们还可以把四个角设定成不同的角度，方法为：</span><br><span class="line">    &lt;corners</span><br><span class="line">            android:topRightRadius="20dp"    右上角</span><br><span class="line">            android:bottomLeftRadius="20dp"  右下角</span><br><span class="line">            android:topLeftRadius="20dp"     左上角</span><br><span class="line">            android:bottomRightRadius="20dp" 左下角</span><br><span class="line">     /&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">corners</span> <span class="attr">android:radius</span>=<span class="string">"5dp"</span>/&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--padding 这个就不用多说了，XML布局文件中经常用到--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">padding</span></span><br><span class="line">        <span class="attr">android:left</span>=<span class="string">"1dp"</span></span><br><span class="line">        <span class="attr">android:right</span>=<span class="string">"2dp"</span></span><br><span class="line">        <span class="attr">android:top</span>=<span class="string">"3dp"</span></span><br><span class="line">        <span class="attr">android:bottom</span>=<span class="string">"4dp"</span></span><br><span class="line">        /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shape</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/28/Android控件圆角和背景选择器的使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -399,29 +540,16 @@
 
       
         
-          
-            <p>&#160;&#160;&#160;&#160;<strong>在</strong>Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？</p>
+          <p>&#160;&#160;&#160;&#160;<strong>在</strong>Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？</p>
 <h3 id="1、对象序列化的作用："><a href="#1、对象序列化的作用：" class="headerlink" title="1、对象序列化的作用："></a>1、对象序列化的作用：</h3><p>java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：</p>
 <blockquote>
 <p>1)永久性保存对象，保存对象的字节序列到本地文件中；<br>2)通过序列化对象在网络中传递对象；<br>3)通过序列化在进程间传递对象。     </p>
 </blockquote>
-<h3 id="2、两者的区别："><a href="#2、两者的区别：" class="headerlink" title="2、两者的区别："></a>2、两者的区别：</h3><p>java开发者都是知道Serializable的实现机制和作用，有人会问为什么Android又引入Parcelable呢？他们的区别是：</p>
-<blockquote>
-<p>Serializable的作用是为了保存对象的属性到本地文件、数据库、网络流、rmi以方便数据传输，当然这种传输可以是程序内的也可以是两个程序间的。而Android的Parcelable的设计初衷是因为Serializable效率过慢，为了在程序内不同组件间以及不同Android程序间(AIDL)高效的传输数据而设计，这些数据仅在内存中存在，Parcelable是通过IBinder通信的消息的载体。</p>
-</blockquote>
-<p>总结就是两者在于存储媒介的不同，Serializable使用IO读写存储在硬盘上，而Parcelable是直接在内存中读写，优缺点也就很直白了：</p>
-<blockquote>
-<p>1）在使用内存的时候，Parcelable类比Serializable性能高，所以推荐使用Parcelable类。<br>2）Serializable在序列化的时候会产生大量的临时变量，从而引起频繁的GC。<br>3）Parcelable不能使用在要将数据存储在磁盘上的情况，因为Parcelable不能很好的保证数据的持续性在外界有变化的情况下。尽管Serializable效率低点，也不提倡用，但在这种情况下，还是建议你用Serializable 。</p>
-</blockquote>
-<h3 id="3、各自的实现方式："><a href="#3、各自的实现方式：" class="headerlink" title="3、各自的实现方式："></a>3、各自的实现方式：</h3><p>Serializable很简单<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserSer</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    String code;</span><br><span class="line">    String message;</span><br><span class="line">    String user;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Parcelable 实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserPar</span> <span class="keyword">implements</span> <span class="title">Parcelable</span>  </span>&#123; <span class="comment">//(1)实现Parcelable接口</span></span><br><span class="line">    <span class="comment">//(2)添加实体属性</span></span><br><span class="line">    <span class="keyword">private</span>   String code;</span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line">    <span class="keyword">private</span> String user;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">UserPar</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">        code = in.readString();</span><br><span class="line">        message = in.readString();</span><br><span class="line">        user = in.readString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//(3)覆写writeToParcel(Parcel dest, int flags)方法，指定写入Parcel类的数据。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest, <span class="keyword">int</span> flags)</span> </span>&#123;</span><br><span class="line">        dest.writeString(code);</span><br><span class="line">        dest.writeString(message);</span><br><span class="line">        dest.writeString(user);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// (4)创建Parcelable.Creator静态对象，有两个方法createFromParcel(Parcel in)与newArray(int size)，</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Creator&lt;UserPar&gt; CREATOR = <span class="keyword">new</span> Creator&lt;UserPar&gt;() &#123;</span><br><span class="line">      <span class="comment">//Parcel中读取出数据对象</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> UserPar <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> UserPar(in);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//创建一个数组</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> UserPar[] newArray(<span class="keyword">int</span> size) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> UserPar[size];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//(5) 覆写describeContents方法，默认返回0。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以看到Parcelable具体的写入（dest.writeInt(mAge);）与读取（gril.mAge = in.readInt();）都是针对Parcel对象进行的操作的</p>
-<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20151228153441509.png" alt="这里写图片描述"></p>
-<p>进入Parcel你会发现基本上都是都是native方法</p>
-<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20151228153844334.png" alt="这里写图片描述"></p>
-<p> 所以Android中对象序列化是最好使用Parcelable 。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/15/Android中Parcelable和Serializable的区别/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -546,16 +674,13 @@
 
       
         
-          
-            <p>&#160;&#160;&#160;&#160;<strong>最</strong>近项目中出现一个bug在登录应用然后HOME键使用其他应用然后回到刚才的应用提示你下线重新登录，找了好久才发现是手机内存不足，应用被系统kill。Android独特的内存机制,导致系统内存不足时会销毁后台的应用,这里我们研究一下应用被销毁后重新加载时的情形<br>一个安卓应用A先后打开3个Activity: a –&gt; b –&gt; c 这个时候如果来了一个电话, 接电话的过程中, 手机内存不够, 那么应用A将会被系统回收当打完电话,再次进入应用A的时候会发生下面的事情:<br>1、系统会重新加载c,而且是在新线程中<br>2、现在点返回关闭c,系统就会重新加载b,而且是在新的线程中(跟c不是一个线程)<br>3、现在点返回关闭b,系统就会重新加载a,而且是在新的线程中(跟c,b的线程都不相同)<br>(就是先打开c,finish了c时加载b,finish了b时加载a)</p>
+          <p>&#160;&#160;&#160;&#160;<strong>最</strong>近项目中出现一个bug在登录应用然后HOME键使用其他应用然后回到刚才的应用提示你下线重新登录，找了好久才发现是手机内存不足，应用被系统kill。Android独特的内存机制,导致系统内存不足时会销毁后台的应用,这里我们研究一下应用被销毁后重新加载时的情形<br>一个安卓应用A先后打开3个Activity: a –&gt; b –&gt; c 这个时候如果来了一个电话, 接电话的过程中, 手机内存不够, 那么应用A将会被系统回收当打完电话,再次进入应用A的时候会发生下面的事情:<br>1、系统会重新加载c,而且是在新线程中<br>2、现在点返回关闭c,系统就会重新加载b,而且是在新的线程中(跟c不是一个线程)<br>3、现在点返回关闭b,系统就会重新加载a,而且是在新的线程中(跟c,b的线程都不相同)<br>(就是先打开c,finish了c时加载b,finish了b时加载a)</p>
 <p><strong>注意:</strong> 这个时候应用中的全局静态变量将全部重置有默认值的为默认值,没有默认值的为null)</p>
-<p>这时如何你是登录状态并且登录信息保存在全局变量中，那个将会告知你要重新登录，你会说登录信息用SharedPreferences保存用户登录状态，但是有的情况下，银行基金类应用为安全是需要每次打开登录验证通过session控制登录超时的，此时就不适合保存本地。然而后台在内存不足时kill掉应用，难道每次都让用户再次登录吗？我想用户也疯了。当让Android有考虑在应用kill之前有保存数据的机会就是onSaveInstanceState方法。<br>如过对onSaveInstanceState不是很了的，这里有篇博客<a href="http://blog.csdn.net/ddna/article/details/5123482" target="_blank" rel="external">关于Activity的onSaveInstanceState调用时机的说明</a></p>
-<p>onSaveInstanceState方法会在什么时候被执行，有这么几种情况：<br>1、当用户按下HOME键时。<br>这是显而易见的，系统不知道你按下HOME后要运行多少其他的程序，自然也不知道activity A是否会被销毁，故系统会调用onSaveInstanceState，让用户有机会保存某些非永久性的数据。以下几种情况的分析都遵循该原则<br>2、长按HOME键，选择运行其他的程序时。<br>3、按下电源按键（关闭屏幕显示）时。<br>4、从activity A中启动一个新的activity时。<br>5、屏幕方向切换时，例如从竖屏切换到横屏时。<br>在屏幕切换之前，系统会销毁activity A，在屏幕切换之后系统又会自动地创建activity A，所以onSaveInstanceState一定会被执行。<br>6、应用在后台内存不足，系统kill时</p>
-<p>总而言之，onSaveInstanceState的调用遵循一个重要原则，即当系统“未经你许可”时销毁了你的activity，则onSaveInstanceState会被系统调用，这是系统的责任，因为它必须要提供一个机会让你保存你的数据（当然你不保存那就随便你了）。</p>
-<p>那么如何使用onSaveInstanceState来在“未经你许可”时销毁了你的activity时保存数据呢。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">     setContentView(R.layout.activity_main);</span><br><span class="line">     <span class="keyword">if</span> (savedInstanceState!=<span class="keyword">null</span>)&#123;</span><br><span class="line">         String userId=savedInstanceState.getString(<span class="string">"userId"</span>);</span><br><span class="line">         String userName=savedInstanceState.getString(<span class="string">"userName"</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onSaveInstanceState</span><span class="params">(Bundle outState)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">super</span>.onSaveInstanceState(outState);</span><br><span class="line">     outState.putString(<span class="string">"userId"</span>, <span class="number">1234</span> + <span class="string">""</span>);</span><br><span class="line">     outState.putString(<span class="string">"userName"</span>, <span class="string">"4321"</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>具体你可以根据需求保存任何复杂的数据都可以。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -820,8 +945,7 @@
 
       
         
-          
-            <p><strong>写在开头的话</strong><br>&#160; &#160; &#160; &#160;<strong>参</strong>与客户端开发的都程序员都知道客户端的开发的时候常常要依赖于服务端的开发，经常客户端发开进度受影响，原因有几点：</p>
+          <p><strong>写在开头的话</strong><br>&#160; &#160; &#160; &#160;<strong>参</strong>与客户端开发的都程序员都知道客户端的开发的时候常常要依赖于服务端的开发，经常客户端发开进度受影响，原因有几点：</p>
 <ul>
 <li>服务端开发人员接口没有写好，自己写测试数据有些场景不太容易满足</li>
 <li>受网络影响很大，尤其是测试服务器很多不确定因素就挂了</li>
@@ -829,32 +953,11 @@
 <li>………</li>
 </ul>
 <p>所以为了解决这种问题我们可以使用moco轻松解决客户端与服务解耦问题，是客户端的开发不在依赖服务端，从而提高开发效率。</p>
-<hr>
-<h3 id="1、什么是MOCO"><a href="#1、什么是MOCO" class="headerlink" title="1、什么是MOCO"></a>1、什么是MOCO</h3><p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913113011211.png" alt="这里写图片描述"><br>简单的说MOCO是一款基于Java开发、用来简单搭建模拟服务器的程序库。MOCO的目的，旨在解决企业级系统集成测试等方面的问题。不光如此他还有一起其他的应用场景：</p>
-<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913113354901.png" alt="这里写图片描述"><br>就是通过MOCO模拟服务端，实现客户端与服务器端解耦，在移动开发中，有人开发一个移动应用，需要有一个远端服务，但在开发时，这个服务还不存在，他就用Moco模拟了一个服务，保证移动应用可以顺利的开发。</p>
-<h3 id="2、如何使用现客户端与服务端的解耦"><a href="#2、如何使用现客户端与服务端的解耦" class="headerlink" title="2、如何使用现客户端与服务端的解耦"></a>2、如何使用现客户端与服务端的解耦</h3><h4 id="1-首先要确保Java环境没有问题，安转JDK，并设置好环境变量"><a href="#1-首先要确保Java环境没有问题，安转JDK，并设置好环境变量" class="headerlink" title="(1)首先要确保Java环境没有问题，安转JDK，并设置好环境变量"></a>(1)首先要确保Java环境没有问题，安转JDK，并设置好环境变量</h4><h4 id="2-接下来，按照下面的步骤安装MOCO"><a href="#2-接下来，按照下面的步骤安装MOCO" class="headerlink" title="(2)接下来，按照下面的步骤安装MOCO"></a>(2)接下来，按照下面的步骤安装MOCO</h4><ol>
-<li>直接下载编译好的 Jar 文件， <a href="https://repo1.maven.org/maven2/com/github/dreamhead/moco-runner/0.10.2/moco-runner-0.10.2-standalone.jar" target="_blank" rel="external">下载地址</a> </li>
-<li>编写配置文件，以简单的 Hello World 为例<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913130116233.png" alt="这里写图片描述"><br>将文件以 json 的后缀存储，比如 hello.json 我保存在桌面上。</li>
-<li>启动Moco服务<br>&#160; &#160; &#160; &#160;<strong>在命令行输入</strong><br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913130431384.png" alt="这里写图片描述"></li>
-<li>访问Web服务<br>&#160; &#160; &#160; &#160;<strong>打开浏览器，访问<a href="http://localhost:12306" target="_blank" rel="external">http://localhost:12306</a></strong><br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913130642373.png" alt="这里写图片描述"><br>以上只是最简单的一个实现。下面我将介绍一下复杂的实例，也是直接可以用在项目开发中的客户端与服务端解耦的实现。</li>
-</ol>
-<h4 id="3-高级用法"><a href="#3-高级用法" class="headerlink" title="(3)高级用法"></a>(3)高级用法</h4><p>带参数的 HTTP 请求，有些时候我们希望能够在请求的同时，传递相应的参数。这时我们需要用到”queries”关键字</p>
-<ol>
-<li>编写配置文件<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913134731606.png" alt="这里写图片描述"></li>
-<li>启动Moco服务<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913132803042.png" alt="这里写图片描述"><br>&#160; &#160; &#160; &#160;</li>
-<li>请求数据<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20150913133039886.png" alt="这里写图片描述"><br>就这么简单，只要开发之前和服务器开发人员定义好接口名称，请求参数，放回数据类型和数据格式，完全可以使用moco自己配置一个模拟服务器，简单快速，客户端开发就不再受接口、网速的限制了，这个方法同样适用于前端开发。<br>在Moco中你还可以发现一些好玩的，或者说高级用法。具体用法还是参考 <a href="https://github.com/dreamhead/moco/blob/master/moco-doc/usage.md" target="_blank" rel="external">Moco 的文档</a>。</li>
-</ol>
-<hr>
-<p><strong>写在结尾的话</strong><br>&#160; &#160; &#160; &#160;Moco的价值完全不是只有这一点点的，开始说过MOCO的目的，旨在解决企业级系统集成测试等方面的问题，在web开发集成测试方面还有很多用处，感兴趣的可以自己去研究一下，这里有一些关于moco的介绍的连接，希望对你有帮助：</p>
-<blockquote>
-<ul>
-<li><a href="https://github.com/dreamhead/moco" target="_blank" rel="external">github源码地址</a>  </li>
-<li><a href="http://www.ibm.com/developerworks/cn/web/1405_liugang_mocowebtest/" target="_blank" rel="external">Moco 框架以及其在 Web  集成测试的应用</a></li>
-<li><a href="http://www.csdn.net/article/2013-08-23/2816684-Moco-Java-framework" target="_blank" rel="external">郑晔谈Moco框架的前世今生以及Java编程之道</a></li>
-</ul>
-</blockquote>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/13/Moco实现客户端与服务端解耦/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -979,33 +1082,15 @@
 
       
         
-          
-            <p>&#160; &#160; &#160; &#160;<strong>在</strong>Android开发中经常会遇到各种各样的异常使程序闪退，每次的问题不尽相同，如果每次是链接电脑还可以通过log找到哪里的代码出错，可是有的时候闪退我们并不能很及时的捕获到异常，但是我们又想得到闪退时候的log日志，鉴于此一个Crash收集器显得大有用处了。<br>&#160; &#160; &#160; &#160;我们可以将异常存储在<strong>本地</strong>也可以上传到<strong>服务器</strong>。本地信息可以便于我们快速找到出现错误的地方，上传服务器便于我们对异常信息进行分类总结整理，从而能够能快速的分析解决问题。</p>
+          <p>&#160; &#160; &#160; &#160;<strong>在</strong>Android开发中经常会遇到各种各样的异常使程序闪退，每次的问题不尽相同，如果每次是链接电脑还可以通过log找到哪里的代码出错，可是有的时候闪退我们并不能很及时的捕获到异常，但是我们又想得到闪退时候的log日志，鉴于此一个Crash收集器显得大有用处了。<br>&#160; &#160; &#160; &#160;我们可以将异常存储在<strong>本地</strong>也可以上传到<strong>服务器</strong>。本地信息可以便于我们快速找到出现错误的地方，上传服务器便于我们对异常信息进行分类总结整理，从而能够能快速的分析解决问题。</p>
 <ul>
-<li><p>异常的收集主要实现<strong>UncaughtExceptionHandler</strong>接口，具体看一下代码实现过程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">mDefaultCrashHandler=<span class="keyword">new</span> Thread.UncaughtExceptionHandler()&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">uncaughtException</span><span class="params">(Thread thread, Throwable ex)</span> </span>&#123;</span><br><span class="line">            Log.e(TAG, <span class="string">"未捕捉的异常："</span>, ex);</span><br><span class="line">            <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                    Looper.prepare();</span><br><span class="line">                    Toast.makeText(mContext, <span class="string">"呀，程序挂了，真的非常对不起!"</span>, Toast.LENGTH_LONG).show();</span><br><span class="line">                    Looper.loop();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;.start();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (Config.isDebug)&#123;</span><br><span class="line">                    <span class="comment">//保存在本地</span></span><br><span class="line">                    saveException(ex);</span><br><span class="line">                &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="comment">//上传到服务器</span></span><br><span class="line">                    uploadExceptionToServer(ex);</span><br><span class="line">                &#125;</span><br><span class="line">                Log.e(TAG, <span class="string">"未捕捉的异常保存成功"</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e1) &#123;</span><br><span class="line">                Log.e(TAG, <span class="string">"未捕捉的异常保存失败"</span>);</span><br><span class="line">                e1.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            Log.e(TAG, <span class="string">"prepare kill process"</span>);</span><br><span class="line">            android.os.Process.killProcess(android.os.Process.myPid());</span><br><span class="line">            Log.e(TAG, <span class="string">"prepare exit"</span>);</span><br><span class="line">            System.exit(<span class="number">1</span>);</span><br><span class="line">            Log.e(TAG, <span class="string">"exited"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">Thread.setDefaultUncaughtExceptionHandler(mDefaultCrashHandler);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>保存到本地调用<strong>saveException(ex)</strong>代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 把错误保存起来，如果有sdCard，则保存到sdCard的缓存中，否则保存到内部存储的缓存中</span><br><span class="line"> * sdCard位置： /storage/emulated/0/Android/data/com.coder.someproject/cache/log/20151113_095811.log&lt;br/&gt;</span><br><span class="line"> * 内部存储位置：/data/data/com.coder.someproject/cache/log/20151113_180041.log</span><br><span class="line"> * <span class="doctag">@param</span> ex</span><br><span class="line"> * <span class="doctag">@throws</span> Exception</span><br><span class="line"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">saveException</span><span class="params">(Throwable ex)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    File logDir = Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())</span><br><span class="line">            ? mContext.getExternalCacheDir()</span><br><span class="line">            :mContext.getCacheDir();</span><br><span class="line">    logDir = <span class="keyword">new</span> File(logDir, <span class="string">"log"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!logDir.exists()) &#123;</span><br><span class="line">        logDir.mkdir();</span><br><span class="line">    &#125;</span><br><span class="line">    File logFile = <span class="keyword">new</span> File(logDir, <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyyMMdd_HHmmss"</span>, Locale.SIMPLIFIED_CHINESE).format(<span class="keyword">new</span> Date()) + <span class="string">".log"</span>);</span><br><span class="line">    Log.e(<span class="string">"abc"</span>, <span class="string">"错误日记保存位置："</span> + logFile.getAbsolutePath());</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">long</span> current=System.currentTimeMillis();</span><br><span class="line">        String time=<span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-mm-dd HH:mm:ss"</span>).format(<span class="keyword">new</span> Date(current));</span><br><span class="line">        PrintWriter pw=<span class="keyword">new</span> PrintWriter(<span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> FileWriter(logFile)));</span><br><span class="line">        pw.println(<span class="string">"time:"</span>+time);</span><br><span class="line">        dumpPhoneInfo(pw);</span><br><span class="line">        pw.println();</span><br><span class="line">        ex.printStackTrace(pw);</span><br><span class="line">        pw.close();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为了便于我们追逐异常我们还需要知道当期应用使用手机的信息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line">     * 获取当前应用和手机的信息</span><br><span class="line">     * <span class="doctag">@param</span> pw</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dumpPhoneInfo</span><span class="params">(PrintWriter pw)</span> </span>&#123;</span><br><span class="line">        PackageManager pm=mContext.getPackageManager();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            PackageInfo pi=pm.getPackageInfo(mContext.getPackageName(),PackageManager.GET_ACTIVITIES);</span><br><span class="line">            pw.print(<span class="string">"App Version:"</span>);</span><br><span class="line">            pw.print(pi.versionName);</span><br><span class="line">            pw.print(<span class="string">"_"</span>);</span><br><span class="line">            pw.println(pi.versionCode);</span><br><span class="line">            <span class="comment">//Android  版本号</span></span><br><span class="line">            pw.print(<span class="string">"OS Version:"</span>);</span><br><span class="line">            pw.print(Build.VERSION.RELEASE);</span><br><span class="line">            pw.print(<span class="string">"_"</span>);</span><br><span class="line">            pw.println(Build.VERSION.SDK_INT);</span><br><span class="line">            <span class="comment">//手机制造商信息</span></span><br><span class="line">            pw.print(<span class="string">"Vendor:"</span>);</span><br><span class="line">            pw.println(Build.MANUFACTURER);</span><br><span class="line">            <span class="comment">//手机型号</span></span><br><span class="line">            pw.print(<span class="string">"Model:"</span>);</span><br><span class="line">            pw.println(Build.MODEL);</span><br><span class="line">            <span class="comment">//cup架构</span></span><br><span class="line">            pw.print(<span class="string">"CPU ABI:"</span>);</span><br><span class="line">            pw.println(Build.CPU_ABI);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (PackageManager.NameNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>这样一个Carsh收集工作就做好，然后在Applciaton中初始化就可以工作了</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate();</span><br><span class="line">    CrashHandler crashHandler=<span class="keyword">new</span> CrashHandler();</span><br><span class="line">    crashHandler.init(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>异常的收集主要实现<strong>UncaughtExceptionHandler</strong>接口，具体看一下代码实现过程</li>
 </ul>
-<ul>
-<li><p>测试一下，我们自定义一个异常，然后查看我们本地收集到的异常信息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">button .setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">            Toast.makeText(MainActivity.<span class="keyword">this</span>,<span class="string">"button"</span>,Toast.LENGTH_SHORT);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"自定义异常....."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>本地捕获异常信息截图<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/Screenshot_2016-04-13-11-10-41.png?imageView/2/w/500/q/100" alt=""><br><img src="http://7xsiux.com1.z0.glb.clouddn.com/Screenshot_2016-04-13-11-11-14.png?imageView/2/w/500/q/100" alt=""></p>
-</li>
-<li><p>异常捕获工具类放到<strong>Gists</strong>上了：<strong><a href="https://gist.github.com/yuantang/754e0362cc79852f88d702bc7455cd15" target="_blank" rel="external">Crash收集器</a></strong></p>
-</li>
-</ul>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/13/Crash-收集器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1130,14 +1215,13 @@
 
       
         
-          
-            <p>&#160; &#160; &#160; &#160;<strong>在</strong>Android开发中往往要使用多线程操作，通常会进耗时操作放在单独的线程中执行，避免其占用主线程，但是子线程无法操作主线程，在子线程操作主线程会出错误。Android提供了Handle类来实现子线程更新UI线程，但是代码会显得臃肿，使用AsynTask一个轻量级的异步任务，任务在主线程之外运行，而回调方法是在主线程中执行，这就有效地避免了使用Handler带来的麻烦，会使代码清爽很多。<br>&#160; &#160; &#160; &#160;如果每个任务都要创建一个线程，那么应用程序的效率要低很多，并且线程无法管理，匿名线程创建并启动后就不受程序的控制了，如果有很多个请求发送，那么就会启动非常多的线程，系统将不堪重负，为了解决以上的问题，Android在1.5版本引入了AsyncTask。AsyncTask是使用java.util.concurrent框架来管理线程以及并发任务的执行，concurrent框架是一个非常成熟，高效的框架，经过了严格的测试，因此AsyncTask很好的解决了多线程的问题。</p>
-<h3 id="1、AsyncTask的执行步骤"><a href="#1、AsyncTask的执行步骤" class="headerlink" title="1、AsyncTask的执行步骤"></a>1、AsyncTask的执行步骤</h3><p>AsyncTask的执行分为四个步骤，每一步都对应执行方法，这些方法不应该由应用程序调用，开发者需要做的就是实现这些方法。在任务的执行过程中，这些方法被自动调用执行。<br><strong>(1) onPreExecute() 当任务执行之前开始调用此方法，可以在这里显示进度对话框。</strong><br><strong>(2) onProgressUpdate(Progress… values) 当任务执行中调用,此方法在主线程执行，用于显示任务执行的进度。</strong><br><strong>(3) doInBackground(Params… params) 此方法在后台线程执行（子线程），完成任务的主要工作，通常是一个耗时操作。在执行过程中可以调用publicProgress(Progress…)来更新任务的进度。</strong><br><strong>(4) onPostExecute(Result…result) 此方法在主线程执行（UI线程），任务执行的结果作为此方法的参数返回。</strong></p>
-<h3 id="2、AsyncTask的泛型类型-Params，Progress和Result。"><a href="#2、AsyncTask的泛型类型-Params，Progress和Result。" class="headerlink" title="2、AsyncTask的泛型类型 Params，Progress和Result。"></a>2、AsyncTask的泛型类型 Params，Progress和Result。</h3><p><img src="http://7xsiux.com1.z0.glb.clouddn.com/ansytask.png" alt="image"><br>AsyncTask定义了三种泛型类型 Params，Progress和Result。<br><strong>(1) Params 启动任务执行的输入可变参数，比如HTTP请求的URL,可以指定多个。</strong><br><strong>(2) Progress 后台任务执行的百分比。在doInBackground()中调用调用publicProgress(Progress…)设置的参数。</strong><br><strong>(3) Result 后台执行任务最终返回的结果，比如String、object…</strong></p>
-<h3 id="3、AsyncTask使用实例"><a href="#3、AsyncTask使用实例" class="headerlink" title="3、AsyncTask使用实例"></a>3、AsyncTask使用实例</h3><p>正确使用AsyncTask类，要遵守以下几条准则：<br><strong>(1) Task的实例必须在UI thread中创建。</strong><br><strong>(2) execute方法必须在UI thread中调用。</strong><br><strong>(3) 不要手动的调用onPreExecute(), onPostExecute(Result)，doInBackground(Params…), onProgressUpdate(Progress…)这几个方法。</strong><br><strong>(4) 该task只能被执行一次，否则多次调用时将会出现异常。</strong><br><strong>(5) doInBackground方法和onPostExecute的参数必须对应。</strong></p>
-<p>下面是从网上获取一个网页在TextViewh中展示源码的实例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> android.os.AsyncTask;</span><br><span class="line"><span class="keyword">import</span> android.os.Bundle;</span><br><span class="line"><span class="keyword">import</span> android.support.annotation.Nullable;</span><br><span class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</span><br><span class="line"><span class="keyword">import</span> android.util.Log;</span><br><span class="line"><span class="keyword">import</span> android.view.View;</span><br><span class="line"><span class="keyword">import</span> android.widget.EditText;</span><br><span class="line"><span class="keyword">import</span> android.widget.ProgressBar;</span><br><span class="line"><span class="keyword">import</span> android.widget.TextView;</span><br><span class="line"><span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"><span class="keyword">import</span> java.io.ByteArrayOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Activity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> EditText url_edt;</span><br><span class="line">    <span class="keyword">private</span> ProgressBar progress;</span><br><span class="line">    <span class="keyword">private</span> TextView content_txt;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main2);</span><br><span class="line">        url_edt= (EditText) findViewById(R.id.addres_edt);</span><br><span class="line">        progress= (ProgressBar) findViewById(R.id.progress);</span><br><span class="line">        content_txt= (TextView) findViewById(R.id.content_txt);</span><br><span class="line">        findViewById(R.id.do_btn).setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">                getContent();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">getContent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (url_edt.getText().toString()!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            MyTask myTask=<span class="keyword">new</span> MyTask();</span><br><span class="line">            <span class="comment">//execute()在UI线程中执行</span></span><br><span class="line">            myTask.execute(url_edt.getText().toString().trim());</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            Toast.makeText(<span class="keyword">this</span>,<span class="string">"请输入地址"</span>,Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">class</span>  <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">String</span>,<span class="title">Integer</span>,<span class="title">Object</span>&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"MyTask"</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1、当任务执行之前开始调用此方法，可以在这里显示进度对话框。</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPreExecute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.onPreExecute();</span><br><span class="line">            Log.d(TAG,<span class="string">"onPreExecute"</span>);</span><br><span class="line">            progress.setVisibility(View.VISIBLE);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2、当任务执行中调用，此方法在主线程执行，用于显示任务执行的进度。</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(Integer... values)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.onProgressUpdate(values);</span><br><span class="line">            Log.d(TAG,<span class="string">"onProgressUpdate--------&gt;"</span>+values[<span class="number">0</span>]);</span><br><span class="line">            progress.setProgress(values[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//3、此方法在后台线程执行（子线程），完成任务的主要工作，通常是一个耗时操作。</span></span><br><span class="line">        <span class="comment">// 在执行过程中可以调用publicProgress(Progress…)来更新任务的进度。</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> Object <span class="title">doInBackground</span><span class="params">(String... params)</span> </span>&#123;</span><br><span class="line">            Log.d(TAG,<span class="string">"doInBackground"</span>);</span><br><span class="line">            <span class="comment">//获取网络数据</span></span><br><span class="line">            Object s = getData(params[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">if</span> (s != <span class="keyword">null</span>)&#123;</span><br><span class="line">                <span class="keyword">return</span> s;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//4、此方法在主线程执行（UI线程），任务执行的结果作为此方法的参数返回。</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onPostExecute</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>.onPostExecute(o);</span><br><span class="line">            Log.d(TAG,<span class="string">"onPostExecute------&gt;"</span>+o.toString());</span><br><span class="line">            content_txt.setText(o.toString());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Nullable</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> Object <span class="title">getData</span><span class="params">(String param)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                URL url=<span class="keyword">new</span> URL(param);</span><br><span class="line">                HttpURLConnection httpUrlConnection= (HttpURLConnection) url.openConnection();</span><br><span class="line">                httpUrlConnection.setDoOutput(<span class="keyword">true</span>);</span><br><span class="line">                httpUrlConnection.setDoInput(<span class="keyword">true</span>);</span><br><span class="line">                <span class="comment">// 请求不使用缓存</span></span><br><span class="line">                httpUrlConnection.setUseCaches(<span class="keyword">false</span>);</span><br><span class="line">                <span class="comment">// 设定传送的内容类型是可序列化的java对象</span></span><br><span class="line">                <span class="comment">// (如果不设此项,在传送序列化对象时,当WEB服务默认的不是这种类型时可能抛java.io.EOFException)</span></span><br><span class="line">                httpUrlConnection.setRequestProperty(<span class="string">"Content-type"</span>, <span class="string">"application/x-java-serialized-object"</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 要求http请求不要gzip压缩，如果是gzip获取到响应长度是-1</span></span><br><span class="line">                httpUrlConnection .setRequestProperty(<span class="string">"Accept-Encoding"</span>, <span class="string">"identity"</span>);</span><br><span class="line">                <span class="keyword">long</span> length = httpUrlConnection.getContentLength();</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 设定请求的方法为"POST"，默认是GET</span></span><br><span class="line">                httpUrlConnection.setRequestMethod(<span class="string">"GET"</span>);</span><br><span class="line">                <span class="comment">//连接，从上述第2条中url.openConnection()至此的配置必须要在connect之前完成，</span></span><br><span class="line">                httpUrlConnection.connect();</span><br><span class="line">                InputStream is=httpUrlConnection.getInputStream();</span><br><span class="line">                <span class="comment">//判断是否正常响应数据</span></span><br><span class="line">                <span class="keyword">if</span> (httpUrlConnection.getResponseCode() != HttpURLConnection.HTTP_OK) &#123;</span><br><span class="line">                    System.out.println(<span class="string">"网络错误异常！!!!"</span>);</span><br><span class="line">                    <span class="keyword">return</span>  <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                Log.d(TAG,<span class="string">"getContentLength----------&gt;"</span>+length);</span><br><span class="line">                String s = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">if</span>(is != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">                    <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">                    <span class="keyword">int</span> ch = -<span class="number">1</span>;</span><br><span class="line">                    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">while</span>((ch = is.read(buf)) != -<span class="number">1</span>) &#123;</span><br><span class="line">                        baos.write(buf, <span class="number">0</span>, ch);</span><br><span class="line">                        count += ch;</span><br><span class="line">                        <span class="keyword">if</span>(length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                            <span class="comment">// 如果知道响应的长度，调用publishProgress（）更新进度</span></span><br><span class="line">                            publishProgress((<span class="keyword">int</span>) ((count / (<span class="keyword">float</span>) length) * <span class="number">100</span>));</span><br><span class="line">                        &#125;</span><br><span class="line">                        <span class="comment">// 让线程休眠100ms</span></span><br><span class="line">                        Thread.sleep(<span class="number">500</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    s = <span class="keyword">new</span> String(baos.toByteArray());</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 返回结果</span></span><br><span class="line">                <span class="keyword">return</span> s;</span><br><span class="line">            &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-          
+          <p>&#160; &#160; &#160; &#160;<strong>在</strong>Android开发中往往要使用多线程操作，通常会进耗时操作放在单独的线程中执行，避免其占用主线程，但是子线程无法操作主线程，在子线程操作主线程会出错误。Android提供了Handle类来实现子线程更新UI线程，但是代码会显得臃肿，使用AsynTask一个轻量级的异步任务，任务在主线程之外运行，而回调方法是在主线程中执行，这就有效地避免了使用Handler带来的麻烦，会使代码清爽很多。<br>&#160; &#160; &#160; &#160;如果每个任务都要创建一个线程，那么应用程序的效率要低很多，并且线程无法管理，匿名线程创建并启动后就不受程序的控制了，如果有很多个请求发送，那么就会启动非常多的线程，系统将不堪重负，为了解决以上的问题，Android在1.5版本引入了AsyncTask。AsyncTask是使用java.util.concurrent框架来管理线程以及并发任务的执行，concurrent框架是一个非常成熟，高效的框架，经过了严格的测试，因此AsyncTask很好的解决了多线程的问题。</p>
+<h3 id="1、AsyncTask的执行步骤"><a href="#1、AsyncTask的执行步骤" class="headerlink" title="1、AsyncTask的执行步骤"></a>1、AsyncTask的执行步骤</h3>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/12/AsynTask-使用解析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1262,8 +1346,7 @@
 
       
         
-          
-            <p>&#160; &#160; &#160; &#160;<strong>在</strong>公司接触几个项目，代码命名都没有统一的命名规范，读起来很不方面。所以总结了一下，使用自己能够养成一个好的代码命名规范，毕竟好的代码命名规范提高代码的可读性，会使日后代码维护效率提高很多。</p>
+          <p>&#160; &#160; &#160; &#160;<strong>在</strong>公司接触几个项目，代码命名都没有统一的命名规范，读起来很不方面。所以总结了一下，使用自己能够养成一个好的代码命名规范，毕竟好的代码命名规范提高代码的可读性，会使日后代码维护效率提高很多。</p>
 <h3 id="1、书写规范"><a href="#1、书写规范" class="headerlink" title="1、书写规范"></a>1、书写规范</h3><ul>
 <li><strong>编码方式统一是UTF-8</strong></li>
 <li><strong>一个方法最多不要超过40行代码</strong></li>
@@ -1275,108 +1358,11 @@
 </blockquote>
 </li>
 </ul>
-<h3 id="3、方法名：使用小驼峰规则，用动词命名，第一个单词的首字母小写，其他单词的首字母大写。"><a href="#3、方法名：使用小驼峰规则，用动词命名，第一个单词的首字母小写，其他单词的首字母大写。" class="headerlink" title="3、方法名：使用小驼峰规则，用动词命名，第一个单词的首字母小写，其他单词的首字母大写。"></a>3、方法名：使用小驼峰规则，用动词命名，第一个单词的首字母小写，其他单词的首字母大写。</h3><p>以下是几种常见的方法的命名：</p>
-<blockquote>
-<p>  初始化方法，命名以init开头，例：initView<br>  按钮点击方法，命名以to开头，例：toLogin<br>  设置方法，命名以set开头，   例：setData<br>  具有返回值的获取方法，命名以get开头，   例：getData<br>  通过异步加载数据的方法，命名以load开头，例：loadData<br>  布尔型的判断方法，命名以is或has，或具有逻辑意义的单词如equals，例：isEmpty</p>
-</blockquote>
-<h3 id="4、控件缩写"><a href="#4、控件缩写" class="headerlink" title="4、控件缩写:"></a>4、控件缩写:</h3><table>
-<thead>
-<tr>
-<th style="text-align:left">控件</th>
-<th style="text-align:left">缩写</th>
-<th style="text-align:left">控件</th>
-<th style="text-align:left">缩写</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">TextView</td>
-<td style="text-align:left">txt</td>
-<td style="text-align:left">EditText</td>
-<td style="text-align:left">edt</td>
-</tr>
-<tr>
-<td style="text-align:left">Button</td>
-<td style="text-align:left">btn</td>
-<td style="text-align:left">ImageButton</td>
-<td style="text-align:left">ibtn</td>
-</tr>
-<tr>
-<td style="text-align:left">ImageView</td>
-<td style="text-align:left">img</td>
-<td style="text-align:left">ListView</td>
-<td style="text-align:left">list</td>
-</tr>
-<tr>
-<td style="text-align:left">RadioGroup</td>
-<td style="text-align:left">group</td>
-<td style="text-align:left">RadioButton</td>
-<td style="text-align:left">rbtn</td>
-</tr>
-<tr>
-<td style="text-align:left">ProgressBar</td>
-<td style="text-align:left">progress</td>
-<td style="text-align:left">SeekBar</td>
-<td style="text-align:left">seek</td>
-</tr>
-<tr>
-<td style="text-align:left">CheckBox</td>
-<td style="text-align:left">chk</td>
-<td style="text-align:left">Spinner</td>
-<td style="text-align:left">spinner</td>
-</tr>
-<tr>
-<td style="text-align:left">TableLayout</td>
-<td style="text-align:left">table</td>
-<td style="text-align:left">TableRow</td>
-<td style="text-align:left">row</td>
-</tr>
-<tr>
-<td style="text-align:left">LinearLayout</td>
-<td style="text-align:left">llayout</td>
-<td style="text-align:left">RelativeLayout</td>
-<td style="text-align:left">rlayout</td>
-</tr>
-<tr>
-<td style="text-align:left">ScrollView</td>
-<td style="text-align:left">scroll</td>
-<td style="text-align:left">SearchView</td>
-<td style="text-align:left">search</td>
-</tr>
-<tr>
-<td style="text-align:left">TabHost</td>
-<td style="text-align:left">host</td>
-<td style="text-align:left">TabWidget</td>
-<td style="text-align:left">widget</td>
-</tr>
-</tbody>
-</table>
-<h3 id="5、常量命名"><a href="#5、常量命名" class="headerlink" title="5、常量命名:"></a>5、常量命名:</h3><p>   全部为大写单词，单词之间用下划线分开。<br>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> PAGE_SIZE = <span class="number">20</span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="6、变量命名"><a href="#6、变量命名" class="headerlink" title="6、变量命名:"></a>6、变量命名:</h3><p><strong>{范围描述+}意义描述+类型描述的组合，用驼峰式，首字母小写。</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> TextView headerTitleTxt; <span class="comment">// 标题栏的标题</span></span><br><span class="line"><span class="keyword">private</span> Button   loginBtn;       <span class="comment">// 登录按钮</span></span><br><span class="line"><span class="keyword">private</span> UserBean userBean;       <span class="comment">// 用户实例</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="7、控件id命名"><a href="#7、控件id命名" class="headerlink" title="7、控件id命名:"></a>7、控件id命名:</h3><p><strong>{范围<em>}意义</em>控件缩写，范围可选，只在有明确定义的范围内才需要加上。</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">android:id=<span class="string">"@+id/header_title_txt"</span></span><br><span class="line">android:id=<span class="string">"@+id/login_btn"</span></span><br></pre></td></tr></table></figure></p>
-<p>(通过ButterKnife插件自动绑定控件后和(6)变量命名刚好吻合)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bind</span>(R.id.header_title_txt)</span><br><span class="line">TextView headerTitleTxt;</span><br><span class="line"><span class="meta">@Bind</span>(R.id.login_btn)</span><br><span class="line">Button loginBtn;</span><br></pre></td></tr></table></figure></p>
-<h3 id="8、layout命名"><a href="#8、layout命名" class="headerlink" title="8、layout命名:"></a>8、layout命名:</h3><p><strong>组件类型<em>{范围</em>}功能，范围可选，只在有明确定义的范围内才需要加上。</strong><br>以下为几种常用的组件类型命名：</p>
-<blockquote>
-<p>activity<em>{范围</em>}功能，   为Activity的命名格式<br>fragment<em>{范围</em>}功能，   为Fragment的命名格式<br>dialog<em>{范围</em>}功能，     为Dialog的命名格式<br>item<em>list</em>{范围_}功能，  为ListView的item命名格式<br>item<em>grid</em>{范围_}功能，  为GridView的item命名格式<br>header<em>list</em>{范围_}功能，为ListView的HeaderView命名格式<br>footer<em>list</em>{范围_}功能，为ListView的FooterView命名格式</p>
-</blockquote>
-<h3 id="9、strings的命名"><a href="#9、strings的命名" class="headerlink" title="9、strings的命名"></a>9、strings的命名</h3><p><strong>类型<em>{范围</em>}功能，范围可选。</strong></p>
-<blockquote>
-<p>页面标题，命名格式为：      title<em>页面<br>按钮文字，命名格式为：      btn</em>按钮事件<br>标签文字，命名格式为：      label<em>标签文字<br>选项卡文字，命名格式为：    tab</em>选项卡文字<br>消息框文字，命名格式为：    toast<em>消息<br>编辑框的提示文字，命名格式为： hint</em>提示信息<br>图片的描述文字，命名格式为：   desc<em>图片文字<br>对话框的文字，命名格式为：     dialog</em>文字<br>menu的item文字，命名格式为：   action_文字</p>
-</blockquote>
-<h3 id="10、colors的命名"><a href="#10、colors的命名" class="headerlink" title="10、colors的命名"></a>10、colors的命名</h3><p><strong>前缀{<em>控件}{</em>范围}{_后缀}，控件、范围、后缀可选，但控件和范围至少要有一个。</strong></p>
-<blockquote>
-<p>背景颜色，添加bg前缀<br>文本颜色，添加text前缀<br>分割线颜色，添加div前缀<br>区分状态时，默认状态的颜色，添加normal后缀<br>区分状态时，按下时的颜色，  添加pressed后缀<br>区分状态时，选中时的颜色，  添加selected后缀<br>区分状态时，不可用时的颜色，添加disable后缀</p>
-</blockquote>
-<h3 id="11、drawable的命名"><a href="#11、drawable的命名" class="headerlink" title="11、drawable的命名"></a>11、drawable的命名</h3><p><strong>前缀{<em>控件}{</em>范围}{_后缀}，控件、范围、后缀可选，但控件和范围至少要有一个。</strong></p>
-<blockquote>
-<p>图标类，添加ic前缀<br>背景类，添加bg前缀<br>分隔类，添加div前缀<br>默认类，添加def前缀<br>区分状态时，默认状态，      添加normal后缀<br>区分状态时，按下时的状态，  添加pressed后缀<br>区分状态时，选中时的状态，  添加selected后缀<br>区分状态时，不可用时的状态，添加disable后缀<br>多种状态的，添加selector后缀（一般为ListView的selector或按钮的selector）</p>
-</blockquote>
-<h3 id="12、动画文件命名"><a href="#12、动画文件命名" class="headerlink" title="12、动画文件命名"></a>12、动画文件命名</h3><p><strong>动画类型_动画方向。</strong></p>
-<blockquote>
-<p>fade_in，           淡入<br>fade_out，          淡出<br>push_down_in，      从下方推入<br>push_down_out，     从下方推出<br>slide_in_from_top， 从头部滑动进入<br>zoom_enter，        变形进入<br>shrink_to_middle，  中间缩小</p>
-</blockquote>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/11/Android命名规范/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1444,7 +1430,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1461,7 +1447,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

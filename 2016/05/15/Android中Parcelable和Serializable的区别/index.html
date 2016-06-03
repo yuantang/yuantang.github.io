@@ -67,7 +67,7 @@
 1、对象序列化的作用：java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：">
 <meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20151228153441509.png">
 <meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20151228153844334.png">
-<meta property="og:updated_time" content="2016-05-28T05:13:23.044Z">
+<meta property="og:updated_time" content="2016-06-03T08:39:08.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android中Parcelable和Serializable的区别">
 <meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？
@@ -290,6 +290,7 @@
 <blockquote>
 <p>1)永久性保存对象，保存对象的字节序列到本地文件中；<br>2)通过序列化对象在网络中传递对象；<br>3)通过序列化在进程间传递对象。     </p>
 </blockquote>
+<a id="more"></a>
 <h3 id="2、两者的区别："><a href="#2、两者的区别：" class="headerlink" title="2、两者的区别："></a>2、两者的区别：</h3><p>java开发者都是知道Serializable的实现机制和作用，有人会问为什么Android又引入Parcelable呢？他们的区别是：</p>
 <blockquote>
 <p>Serializable的作用是为了保存对象的属性到本地文件、数据库、网络流、rmi以方便数据传输，当然这种传输可以是程序内的也可以是两个程序间的。而Android的Parcelable的设计初衷是因为Serializable效率过慢，为了在程序内不同组件间以及不同Android程序间(AIDL)高效的传输数据而设计，这些数据仅在内存中存在，Parcelable是通过IBinder通信的消息的载体。</p>
@@ -435,7 +436,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -452,7 +453,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/index.html">
 <meta property="og:site_name" content="蛋哥">
 <meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近项目中出现一个bug在登录应用然后HOME键使用其他应用然后回到刚才的应用提示你下线重新登录，找了好久才发现是手机内存不足，应用被系统kill。Android独特的内存机制,导致系统内存不足时会销毁后台的应用,这里我们研究一下应用被销毁后重新加载时的情形一个安卓应用A先后打开3个Activity: a –&amp;gt; b –&amp;gt; c 这个时候如果">
-<meta property="og:updated_time" content="2016-05-28T04:46:44.956Z">
+<meta property="og:updated_time" content="2016-06-03T08:39:29.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" Android应用在内存不足被KILL时如何保存与恢复数据">
 <meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;最近项目中出现一个bug在登录应用然后HOME键使用其他应用然后回到刚才的应用提示你下线重新登录，找了好久才发现是手机内存不足，应用被系统kill。Android独特的内存机制,导致系统内存不足时会销毁后台的应用,这里我们研究一下应用被销毁后重新加载时的情形一个安卓应用A先后打开3个Activity: a –&amp;gt; b –&amp;gt; c 这个时候如果">
@@ -300,6 +300,7 @@
       
         <p>&#160;&#160;&#160;&#160;<strong>最</strong>近项目中出现一个bug在登录应用然后HOME键使用其他应用然后回到刚才的应用提示你下线重新登录，找了好久才发现是手机内存不足，应用被系统kill。Android独特的内存机制,导致系统内存不足时会销毁后台的应用,这里我们研究一下应用被销毁后重新加载时的情形<br>一个安卓应用A先后打开3个Activity: a –&gt; b –&gt; c 这个时候如果来了一个电话, 接电话的过程中, 手机内存不够, 那么应用A将会被系统回收当打完电话,再次进入应用A的时候会发生下面的事情:<br>1、系统会重新加载c,而且是在新线程中<br>2、现在点返回关闭c,系统就会重新加载b,而且是在新的线程中(跟c不是一个线程)<br>3、现在点返回关闭b,系统就会重新加载a,而且是在新的线程中(跟c,b的线程都不相同)<br>(就是先打开c,finish了c时加载b,finish了b时加载a)</p>
 <p><strong>注意:</strong> 这个时候应用中的全局静态变量将全部重置有默认值的为默认值,没有默认值的为null)</p>
+<a id="more"></a>
 <p>这时如何你是登录状态并且登录信息保存在全局变量中，那个将会告知你要重新登录，你会说登录信息用SharedPreferences保存用户登录状态，但是有的情况下，银行基金类应用为安全是需要每次打开登录验证通过session控制登录超时的，此时就不适合保存本地。然而后台在内存不足时kill掉应用，难道每次都让用户再次登录吗？我想用户也疯了。当让Android有考虑在应用kill之前有保存数据的机会就是onSaveInstanceState方法。<br>如过对onSaveInstanceState不是很了的，这里有篇博客<a href="http://blog.csdn.net/ddna/article/details/5123482" target="_blank" rel="external">关于Activity的onSaveInstanceState调用时机的说明</a></p>
 <p>onSaveInstanceState方法会在什么时候被执行，有这么几种情况：<br>1、当用户按下HOME键时。<br>这是显而易见的，系统不知道你按下HOME后要运行多少其他的程序，自然也不知道activity A是否会被销毁，故系统会调用onSaveInstanceState，让用户有机会保存某些非永久性的数据。以下几种情况的分析都遵循该原则<br>2、长按HOME键，选择运行其他的程序时。<br>3、按下电源按键（关闭屏幕显示）时。<br>4、从activity A中启动一个新的activity时。<br>5、屏幕方向切换时，例如从竖屏切换到横屏时。<br>在屏幕切换之前，系统会销毁activity A，在屏幕切换之后系统又会自动地创建activity A，所以onSaveInstanceState一定会被执行。<br>6、应用在后台内存不足，系统kill时</p>
 <p>总而言之，onSaveInstanceState的调用遵循一个重要原则，即当系统“未经你许可”时销毁了你的activity，则onSaveInstanceState会被系统调用，这是系统的责任，因为它必须要提供一个机会让你保存你的数据（当然你不保存那就随便你了）。</p>
@@ -435,7 +436,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -452,7 +453,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
