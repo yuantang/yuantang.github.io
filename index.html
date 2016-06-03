@@ -314,9 +314,15 @@
 <li>ACTION_UP：表示用户在移动(手指或者其他).</li>
 <li>ACTION_MOVE：表示用户抬起了手指. </li>
 <li>ACTION_OUTSIDE: 表示用户触碰超出了正常的UI边界.</li>
-<li>ACTION_CANCEL:表示手势被取消了<br>  多点触控的支持</li>
+<li>ACTION_CANCEL:表示手势被取消了<br>  多点触控下</li>
 <li>ACTION_POINTER_DOWN:有一个非主要的手指按下了.</li>
 <li>ACTION_POINTER_UP:一个非主要的手指抬起来了.</li>
+</ul>
+<h4 id="3-事件发生的位置-X-Y轴："><a href="#3-事件发生的位置-X-Y轴：" class="headerlink" title="(3)事件发生的位置,X,Y轴："></a>(3)事件发生的位置,X,Y轴：</h4><ul>
+<li>getX() 获得事件发生时,触摸的中间区域在屏幕的X轴.</li>
+<li>getY() 获得事件发生时,触摸的中间区域在屏幕的X轴.<br> 在多点触控中:</li>
+<li>getX(int pointerIndex)：获得X轴对应手指事件的发生位置.</li>
+<li>getY(int pointerIndex): 获得Y轴对应手指事件的发生位置.</li>
 </ul>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/06/03/view-事件传递/#more" rel="contents">
