@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="view," />
 
 
 
@@ -57,22 +57,42 @@
 
 
 
-<meta name="description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？
-1、对象序列化的作用：java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：">
+<meta name="description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;上一篇记录了关于View事件的传递，这篇将记录一下关于View的滑动冲突问题。《Android开发艺术探索》书中非常好的总结了事件滑动冲突的场景以及解决办法，这里只是做一个笔记。
+1、常见滑动冲突场景
+
+场景一：外部滑动方法和内部滑动方向不一致;
+场景二：外部滑动方向和内部滑动方向一致;
+场景三：上面两种情况的嵌套。
+
+
+2、处理规则当场景一，用户左">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android中Parcelable和Serializable的区别">
-<meta property="og:url" content="http://yoursite.com/2016/05/15/Android中Parcelable和Serializable的区别/index.html">
+<meta property="og:title" content="view-滑动冲突">
+<meta property="og:url" content="http://yoursite.com/2016/06/06/view-滑动冲突/index.html">
 <meta property="og:site_name" content="蛋哥">
-<meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？
-1、对象序列化的作用：java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20151228153441509.png">
-<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20151228153844334.png">
-<meta property="og:updated_time" content="2016-06-03T08:39:08.055Z">
+<meta property="og:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;上一篇记录了关于View事件的传递，这篇将记录一下关于View的滑动冲突问题。《Android开发艺术探索》书中非常好的总结了事件滑动冲突的场景以及解决办法，这里只是做一个笔记。
+1、常见滑动冲突场景
+
+场景一：外部滑动方法和内部滑动方向不一致;
+场景二：外部滑动方向和内部滑动方向一致;
+场景三：上面两种情况的嵌套。
+
+
+2、处理规则当场景一，用户左">
+<meta property="og:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20160613.png">
+<meta property="og:updated_time" content="2016-06-13T08:09:39.609Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android中Parcelable和Serializable的区别">
-<meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;在Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？
-1、对象序列化的作用：java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：">
-<meta name="twitter:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20151228153441509.png">
+<meta name="twitter:title" content="view-滑动冲突">
+<meta name="twitter:description" content="&amp;#160;&amp;#160;&amp;#160;&amp;#160;上一篇记录了关于View事件的传递，这篇将记录一下关于View的滑动冲突问题。《Android开发艺术探索》书中非常好的总结了事件滑动冲突的场景以及解决办法，这里只是做一个笔记。
+1、常见滑动冲突场景
+
+场景一：外部滑动方法和内部滑动方向不一致;
+场景二：外部滑动方向和内部滑动方向一致;
+场景三：上面两种情况的嵌套。
+
+
+2、处理规则当场景一，用户左">
+<meta name="twitter:image" content="http://7xsiux.com1.z0.glb.clouddn.com/20160613.png">
 
 
 
@@ -90,7 +110,7 @@
   };
 </script>
 
-  <title> Android中Parcelable和Serializable的区别 | 蛋哥 </title>
+  <title> view-滑动冲突 | 蛋哥 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -230,7 +250,7 @@
             
             
               
-                Android中Parcelable和Serializable的区别
+                view-滑动冲突
               
             
           </h1>
@@ -242,19 +262,38 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-15T02:30:25+08:00" content="2016-05-15">
-              2016-05-15
+            <time itemprop="dateCreated" datetime="2016-06-06T15:18:20+08:00" content="2016-06-06">
+              2016-06-06
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/15/Android中Parcelable和Serializable的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/15/Android中Parcelable和Serializable的区别/" itemprop="commentsCount"></span>
+                <a href="/2016/06/06/view-滑动冲突/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/06/view-滑动冲突/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -264,7 +303,7 @@
 
           
           
-             <span id="/2016/05/15/Android中Parcelable和Serializable的区别/" class="leancloud_visitors" data-flag-title="Android中Parcelable和Serializable的区别">
+             <span id="/2016/06/06/view-滑动冲突/" class="leancloud_visitors" data-flag-title="view-滑动冲突">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -285,27 +324,19 @@
       
 
       
-        <p>&#160;&#160;&#160;&#160;<strong>在</strong>Java开发中都知道有一个Serializable可以对象序列化，到了Android开发中又出来一个Parcelable，也可以实现对象的序列化。那他们都可以实现对象的序列化，那他们直接有到底会有什么区别呢？</p>
-<h3 id="1、对象序列化的作用："><a href="#1、对象序列化的作用：" class="headerlink" title="1、对象序列化的作用："></a>1、对象序列化的作用：</h3><p>java序列化主要是为了跨平台，实现对象的一致性，可在不同的平台上，保持自己原有的属性和方法不变 。总结来说就是：</p>
-<blockquote>
-<p>1)永久性保存对象，保存对象的字节序列到本地文件中；<br>2)通过序列化对象在网络中传递对象；<br>3)通过序列化在进程间传递对象。     </p>
+        <p>&#160;&#160;&#160;&#160;<strong>上</strong>一篇记录了关于View事件的传递，这篇将记录一下关于View的滑动冲突问题。《Android开发艺术探索》书中非常好的总结了事件滑动冲突的场景以及解决办法，这里只是做一个笔记。</p>
+<h3 id="1、常见滑动冲突场景"><a href="#1、常见滑动冲突场景" class="headerlink" title="1、常见滑动冲突场景"></a>1、常见滑动冲突场景</h3><blockquote>
+<ul>
+<li>场景一：外部滑动方法和内部滑动方向不一致;</li>
+<li>场景二：外部滑动方向和内部滑动方向一致;</li>
+<li>场景三：上面两种情况的嵌套。<br><img src="http://7xsiux.com1.z0.glb.clouddn.com/20160613.png" alt=""></li>
+</ul>
 </blockquote>
-<a id="more"></a>
-<h3 id="2、两者的区别："><a href="#2、两者的区别：" class="headerlink" title="2、两者的区别："></a>2、两者的区别：</h3><p>java开发者都是知道Serializable的实现机制和作用，有人会问为什么Android又引入Parcelable呢？他们的区别是：</p>
-<blockquote>
-<p>Serializable的作用是为了保存对象的属性到本地文件、数据库、网络流、rmi以方便数据传输，当然这种传输可以是程序内的也可以是两个程序间的。而Android的Parcelable的设计初衷是因为Serializable效率过慢，为了在程序内不同组件间以及不同Android程序间(AIDL)高效的传输数据而设计，这些数据仅在内存中存在，Parcelable是通过IBinder通信的消息的载体。</p>
-</blockquote>
-<p>总结就是两者在于存储媒介的不同，Serializable使用IO读写存储在硬盘上，而Parcelable是直接在内存中读写，优缺点也就很直白了：</p>
-<blockquote>
-<p>1）在使用内存的时候，Parcelable类比Serializable性能高，所以推荐使用Parcelable类。<br>2）Serializable在序列化的时候会产生大量的临时变量，从而引起频繁的GC。<br>3）Parcelable不能使用在要将数据存储在磁盘上的情况，因为Parcelable不能很好的保证数据的持续性在外界有变化的情况下。尽管Serializable效率低点，也不提倡用，但在这种情况下，还是建议你用Serializable 。</p>
-</blockquote>
-<h3 id="3、各自的实现方式："><a href="#3、各自的实现方式：" class="headerlink" title="3、各自的实现方式："></a>3、各自的实现方式：</h3><p>Serializable很简单<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserSer</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    String code;</span><br><span class="line">    String message;</span><br><span class="line">    String user;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>Parcelable 实现<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserPar</span> <span class="keyword">implements</span> <span class="title">Parcelable</span>  </span>&#123; <span class="comment">//(1)实现Parcelable接口</span></span><br><span class="line">    <span class="comment">//(2)添加实体属性</span></span><br><span class="line">    <span class="keyword">private</span>   String code;</span><br><span class="line">    <span class="keyword">private</span> String message;</span><br><span class="line">    <span class="keyword">private</span> String user;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">UserPar</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">        code = in.readString();</span><br><span class="line">        message = in.readString();</span><br><span class="line">        user = in.readString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//(3)覆写writeToParcel(Parcel dest, int flags)方法，指定写入Parcel类的数据。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeToParcel</span><span class="params">(Parcel dest, <span class="keyword">int</span> flags)</span> </span>&#123;</span><br><span class="line">        dest.writeString(code);</span><br><span class="line">        dest.writeString(message);</span><br><span class="line">        dest.writeString(user);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// (4)创建Parcelable.Creator静态对象，有两个方法createFromParcel(Parcel in)与newArray(int size)，</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Creator&lt;UserPar&gt; CREATOR = <span class="keyword">new</span> Creator&lt;UserPar&gt;() &#123;</span><br><span class="line">      <span class="comment">//Parcel中读取出数据对象</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> UserPar <span class="title">createFromParcel</span><span class="params">(Parcel in)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> UserPar(in);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//创建一个数组</span></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> UserPar[] newArray(<span class="keyword">int</span> size) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> UserPar[size];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//(5) 覆写describeContents方法，默认返回0。</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">describeContents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>可以看到Parcelable具体的写入（dest.writeInt(mAge);）与读取（gril.mAge = in.readInt();）都是针对Parcel对象进行的操作的</p>
-<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20151228153441509.png" alt="这里写图片描述"></p>
-<p>进入Parcel你会发现基本上都是都是native方法</p>
-<p><img src="http://7xsiux.com1.z0.glb.clouddn.com/20151228153844334.png" alt="这里写图片描述"></p>
-<p> 所以Android中对象序列化是最好使用Parcelable 。</p>
+<h3 id="2、处理规则"><a href="#2、处理规则" class="headerlink" title="2、处理规则"></a>2、处理规则</h3><p>当场景一，用户左右滑动，让外部的view拦截点击事件，用户上下滑动，让内部view拦截点击事件。只要有滑动，根据滑动的起始点与终止点坐标位置，判断垂直滑动距离大还是水平滑动距离大，做出相应的拦截处理。其他场景也是类似，根据情况做出处理。</p>
+<h3 id="3、解决办法"><a href="#3、解决办法" class="headerlink" title="3、解决办法"></a>3、解决办法</h3><p><strong>外部拦截</strong><br>所有的点击事件都必须先由父View拦截处理，父View需要拦截就拦截，不拦截就由子View处理。伪代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">boolean</span> intercepted=<span class="keyword">false</span>;</span><br><span class="line">     <span class="keyword">switch</span> (event.getAction())&#123;</span><br><span class="line">         <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">             intercepted=<span class="keyword">false</span>;</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">         <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">             <span class="keyword">if</span> (满足父容器拦截要求)&#123;</span><br><span class="line">                 intercepted=<span class="keyword">true</span>;</span><br><span class="line">             &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                 intercepted=<span class="keyword">false</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">         <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line">             intercepted=<span class="keyword">false</span>;</span><br><span class="line">             <span class="keyword">break</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> intercepted;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注：</strong> ACTION_DOWN这个事件是不能拦截的，因为一旦拦截后续的事件都会由父容器处理了。<br><strong>内部拦截</strong><br>如果父View不拦截任何事件，所有事件都传给子View。如果子View需要处理此事件就直接消耗，否则就交给父View进行处理。父View完成这个功能需要配合requestDisallowInterceptTouchEvent()方法才可。这个方法表示是否让父容器拦截事件。伪代码如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onInterceptTouchEvent</span><span class="params">(MotionEvent event)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">switch</span> (event.getAction())&#123;</span><br><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_DOWN:</span><br><span class="line">               requestDisallowInterceptTouchEvent(<span class="keyword">true</span>);</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_MOVE:</span><br><span class="line">               <span class="keyword">if</span> (满足父容器拦截要求)&#123;</span><br><span class="line">                   requestDisallowInterceptTouchEvent(<span class="keyword">false</span>);</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">           <span class="keyword">case</span> MotionEvent.ACTION_UP:</span><br><span class="line"></span><br><span class="line">               <span class="keyword">break</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">super</span>.onInterceptTouchEvent(event);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注：</strong>父View默认拦截除了ACTION_DOWN以外的其他事件，这样子当元素调用parent.requestDisallowInterceptTouchEvent(false)时，父元素才能拦截所需的事件。</p>
+<h3 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h3><p>解决滑动冲突有两种，外部拦截和内部拦截，推荐使用外部拦截，实现起来简单。实际中根据业务具体问题制定处理规则，选择适当的解决办法。</p>
 
       
     </div>
@@ -326,7 +357,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag">#Android</a>
+            <a href="/tags/view/" rel="tag">#view</a>
           
         </div>
       
@@ -335,17 +366,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/05/Android应用在内存不足被KILL时如何保存与恢复数据/" rel="next" title=" Android应用在内存不足被KILL时如何保存与恢复数据">
-                <i class="fa fa-chevron-left"></i>  Android应用在内存不足被KILL时如何保存与恢复数据
+              <a href="/2016/06/03/view-事件传递/" rel="next" title="view 事件传递">
+                <i class="fa fa-chevron-left"></i> view 事件传递
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/28/Android控件圆角和背景选择器的使用/" rel="prev" title="Android控件圆角和背景选择器的使用">
-                Android控件圆角和背景选择器的使用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -360,10 +387,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/05/15/Android中Parcelable和Serializable的区别/"
-     data-title="Android中Parcelable和Serializable的区别"
+        <div class="ds-share flat" data-thread-key="2016/06/06/view-滑动冲突/"
+     data-title="view-滑动冲突"
      data-content=""
-     data-url="http://yoursite.com/2016/05/15/Android中Parcelable和Serializable的区别/">
+     data-url="http://yoursite.com/2016/06/06/view-滑动冲突/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -390,8 +417,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/15/Android中Parcelable和Serializable的区别/"
-           data-title="Android中Parcelable和Serializable的区别" data-url="http://yoursite.com/2016/05/15/Android中Parcelable和Serializable的区别/">
+      <div class="ds-thread" data-thread-key="2016/06/06/view-滑动冲突/"
+           data-title="view-滑动冲突" data-url="http://yoursite.com/2016/06/06/view-滑动冲突/">
       </div>
     
   </div>
@@ -504,7 +531,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、对象序列化的作用："><span class="nav-number">1.</span> <span class="nav-text">1、对象序列化的作用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、两者的区别："><span class="nav-number">2.</span> <span class="nav-text">2、两者的区别：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、各自的实现方式："><span class="nav-number">3.</span> <span class="nav-text">3、各自的实现方式：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、常见滑动冲突场景"><span class="nav-number">1.</span> <span class="nav-text">1、常见滑动冲突场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、处理规则"><span class="nav-number">2.</span> <span class="nav-text">2、处理规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、解决办法"><span class="nav-number">3.</span> <span class="nav-text">3、解决办法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、总结"><span class="nav-number">4.</span> <span class="nav-text">4、总结</span></a></li></ol></div>
             
           </div>
         </section>
