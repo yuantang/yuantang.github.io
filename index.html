@@ -226,6 +226,139 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/18/webView的一些设置/" itemprop="url">
+                  webView的一些设置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-18T09:54:17+08:00" content="2016-08-18">
+              2016-08-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/18/webView的一些设置/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/18/webView的一些设置/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/08/18/webView的一些设置/" class="leancloud_visitors" data-flag-title="webView的一些设置">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>&#160;&#160;&#160;&#160;<strong>项</strong>目开发中嵌入webView记录一下遇到的坑，以及解决办法。</p>
+<p><strong>WebView出现的一些问题</strong></p>
+<p>1、页面加载不出来（解决对某些标签不支持问题）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 开启 DOM storage API 功能 </span></span><br><span class="line">webView.getSettings().setDomStorageEnabled(<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure></p>
+<p>2、在Android 5.0上webview默认不允许加载http与https混合内容（加载的图片出不来）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;</span><br><span class="line">          webView.getSettings().setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/18/webView的一些设置/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/06/view-滑动冲突/" itemprop="url">
                   view-滑动冲突
                 </a>
@@ -1392,150 +1525,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/11/Android命名规范/" itemprop="url">
-                  Android命名规范
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-11T09:41:40+08:00" content="2016-04-11">
-              2016-04-11
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/11/Android命名规范/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/11/Android命名规范/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/04/11/Android命名规范/" class="leancloud_visitors" data-flag-title="Android命名规范">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&#160; &#160; &#160; &#160;<strong>在</strong>公司接触几个项目，代码命名都没有统一的命名规范，读起来很不方面。所以总结了一下，使用自己能够养成一个好的代码命名规范，毕竟好的代码命名规范提高代码的可读性，会使日后代码维护效率提高很多。</p>
-<h3 id="1、书写规范"><a href="#1、书写规范" class="headerlink" title="1、书写规范"></a>1、书写规范</h3><ul>
-<li><strong>编码方式统一是UTF-8</strong></li>
-<li><strong>一个方法最多不要超过40行代码</strong></li>
-</ul>
-<h3 id="2、命名规范"><a href="#2、命名规范" class="headerlink" title="2、命名规范"></a>2、命名规范</h3><ul>
-<li><strong>包命名:域名反写+项目名称+模块名称，全部单词用小写字母。</strong></li>
-<li><strong>类和接口命名：使用大驼峰规则，用名词或名词词组命名，每个单词的首字母大写。</strong><br> 以下为几种常用类的命名：<blockquote>
-<p> activity类，命名以Activity为后缀，如：LoginActivity<br> fragment类，命名以Fragment为后缀，如：ShareDialogFragment<br> service类，命名以Service为后缀，如：DownloadService<br> adapter类，命名以Adapter为后缀，如：FundListAdapter<br> 工具类，命名以Util为后缀，如：EncryptUtil<br> 模型类，命名以Bean为后缀，如：UserBean<br> 接口实现类，命名以Impl为后缀，如：ApiImpl</p>
-</blockquote>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/11/Android命名规范/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1566,7 +1562,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="http://f.hiphotos.baidu.com/baike/w%3D268%3Bg%3D0/sign=3c4e049cc1cec3fd8b3ea073eeb3b302/6159252dd42a2834b1c7cf5b59b5c9ea15cebf79.jpg"
+               src="http://img5.imgtn.bdimg.com/it/u=1959048342,4117460853&fm=21&gp=0.jpgnt.com/u/6096784?v=3&s=460"
                alt="yuantang" />
           <p class="site-author-name" itemprop="name">yuantang</p>
           <p class="site-description motion-element" itemprop="description">不要让放弃成为一种习惯</p>
@@ -1574,7 +1570,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1591,7 +1587,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
